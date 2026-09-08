@@ -1,0 +1,167 @@
+---
+- name: Deploy SLiMS instances per zone
+  hosts: webservers
+  become: true
+  serial: 1
+  any_errors_fatal: false
+  vars:
+    dotenv_values: "{{ hostvars[inventory_hostname].deploy_env | default({}) }}"
+    deploy_zone: "{{ lookup('env', 'DEPLOY_ZONE') | default('all', true) }}"
+    deploy_image_tag: "{{ lookup('env', 'DEPLOY_IMAGE_TAG') | default(dotenv_values.DEPLOY_IMAGE_TAG | default('latest'), true) }}"
+    deploy_image_repo: "{{ lookup('env', 'DEPLOY_IMAGE_REPO') | default(dotenv_values.DEPLOY_IMAGE_REPO | default('ghcr.io/galura-it-solution/galura-slims'), true) }}"
+    ghcr_username: "{{ lookup('env', 'GHCR_USERNAME') | default(dotenv_values.GHCR_USERNAME | default(''), true) }}"
+    ghcr_token: "{{ lookup('env', 'GHCR_TOKEN') | default(dotenv_values.GHCR_TOKEN | default(''), true) }}"
+    docker_network: "{{ lookup('env', 'DEPLOY_DOCKER_NETWORK') | default(dotenv_values.DEPLOY_DOCKER_NETWORK | default('galura_slims_net'), true) }}"
+    db_user: "{{ lookup('env', 'DB_USER') | default(dotenv_values.DB_USER | default('root'), true) }}"
+    db_pass: "{{ lookup('env', 'DB_PASS') | default(dotenv_values.DB_PASS | default('root_password'), true) }}"
+
+    deploy_zones:
+      edu:
+        domain: slims-edu.galura.id
+        container_name: galura-slims-edu
+        db_container_name: galura-slims-edu-db
+        db_name: senayan_edu
+        db_port: "{{ lookup('env', 'DEPLOY_DB_PORT_EDU') | default(dotenv_values.DEPLOY_DB_PORT_EDU | default('3307'), true) }}"
+        image: "{{ lookup('env', 'DEPLOY_IMAGE_EDU') | default(dotenv_values.DEPLOY_IMAGE_EDU | default(deploy_image_repo ~ '-edu:' ~ deploy_image_tag), true) }}"
+        app_port: "{{ lookup('env', 'DEPLOY_PORT_EDU') | default(dotenv_values.DEPLOY_PORT_EDU | default('8081'), true) }}"
+        container_port: "{{ lookup('env', 'DEPLOY_CONTAINER_PORT_EDU') | default(dotenv_values.DEPLOY_CONTAINER_PORT_EDU | default('80'), true) }}"
+        volumes:
+          - slims_edu_appfiles:/var/www/html/files
+          - slims_edu_appimages:/var/www/html/images
+          - slims_edu_apprepo:/var/www/html/repository
+        db_volume: slims_edu_dbdata
+
+      ebook:
+        domain: slims-ebook.galura.id
+        container_name: galura-slims-ebook
+        db_container_name: galura-slims-ebook-db
+        db_name: senayan_ebook
+        db_port: "{{ lookup('env', 'DEPLOY_DB_PORT_EBOOK') | default(dotenv_values.DEPLOY_DB_PORT_EBOOK | default('3308'), true) }}"
+        image: "{{ lookup('env', 'DEPLOY_IMAGE_EBOOK') | default(dotenv_values.DEPLOY_IMAGE_EBOOK | default(deploy_image_repo ~ '-ebook:' ~ deploy_image_tag), true) }}"
+        app_port: "{{ lookup('env', 'DEPLOY_PORT_EBOOK') | default(dotenv_values.DEPLOY_PORT_EBOOK | default('8082'), true) }}"
+        container_port: "{{ lookup('env', 'DEPLOY_CONTAINER_PORT_EBOOK') | default(dotenv_values.DEPLOY_CONTAINER_PORT_EBOOK | default('80'), true) }}"
+        volumes:
+          - slims_ebook_appfiles:/var/www/html/files
+          - slims_ebook_appimages:/var/www/html/images
+          - slims_ebook_apprepo:/var/www/html/repository
+        db_volume: slims_ebook_dbdata
+
+    selected_zone_names: "{{ deploy_zones.keys() | list if deploy_zone == 'all' else deploy_zone.split(',') | map('trim') | list }}"
+    selected_zones: "{{ selected_zone_names | map('extract', deploy_zones) | list }}"
+
+  tasks:
+    - name: Validate requested zones
+      ansible.builtin.assert:
+        that:
+          - item in deploy_zones
+        fail_msg: "Zone '{{ item }}' tidak dikenal. Pilihan: {{ deploy_zones.keys() | list | join(', ') }}"
+      loop: "{{ selected_zone_names }}"
+
+    - name: Ensure Docker network exists
+      community.docker.docker_network:
+        name: "{{ docker_network }}"
+        state: present
+
+    - name: Login to GHCR
+      community.docker.docker_login:
+        registry_url: ghcr.io
+        username: "{{ ghcr_username }}"
+        password: "{{ ghcr_token }}"
+      when:
+        - ghcr_username | length > 0
+        - ghcr_token | length > 0
+      no_log: true
+
+    - name: Pull container images for selected zones
+      community.docker.docker_image:
+        name: "{{ item.image }}"
+        source: pull
+      loop: "{{ selected_zones }}"
+      loop_control:
+        label: "{{ item.image }}"
+      when: ghcr_username | length > 0 or dotenv_values.DEPLOY_IMAGE_REPO is defined
+
+    - name: Ensure DB container is running for selected zones
+      community.docker.docker_container:
+        name: "{{ item.db_container_name }}"
+        image: mariadb:lts
+        state: started
+        restart_policy: always
+        published_ports:
+          - "{{ item.db_port }}:3306"
+        volumes:
+          - "{{ item.db_volume }}:/var/lib/mysql"
+        networks:
+          - name: "{{ docker_network }}"
+        env:
+          MARIADB_ROOT_PASSWORD: "{{ db_pass }}"
+          MARIADB_DATABASE: "{{ item.db_name }}"
+      loop: "{{ selected_zones }}"
+      loop_control:
+        label: "{{ item.db_container_name }}"
+
+    - name: Stop and remove old application containers
+      community.docker.docker_container:
+        name: "{{ item.container_name }}"
+        state: absent
+        force_kill: true
+      loop: "{{ selected_zones }}"
+      loop_control:
+        label: "{{ item.container_name }}"
+
+    - name: Start application containers
+      community.docker.docker_container:
+        name: "{{ item.container_name }}"
+        image: "{{ item.image }}"
+        state: started
+        restart_policy: always
+        published_ports:
+          - "{{ item.app_port }}:{{ item.container_port }}"
+        networks:
+          - name: "{{ docker_network }}"
+        volumes: "{{ item.volumes }}"
+        env:
+          ENV: production
+          DB_HOST: "{{ item.db_container_name }}"
+          DB_PORT: "3306"
+          DB_USER: "{{ db_user }}"
+          DB_PASS: "{{ db_pass }}"
+          DB_NAME: "{{ item.db_name }}"
+      loop: "{{ selected_zones }}"
+      loop_control:
+        label: "{{ item.container_name }}"
+
+    - name: Deploy Nginx vhost template
+      ansible.builtin.template:
+        src: ../roles/nginx/templates/vhost.j2
+        dest: /etc/nginx/sites-available/galura_slims.conf
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Enable Nginx vhost
+      ansible.builtin.file:
+        src: /etc/nginx/sites-available/galura_slims.conf
+        dest: /etc/nginx/sites-enabled/galura_slims.conf
+        state: link
+
+    - name: Reload Nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+
+    - name: Wait for SLiMS HTTP response
+      uri:
+        url: "http://127.0.0.1:{{ item.app_port }}"
+        status_code:
+          - 200
+          - 301
+          - 302
+        timeout: 10
+      register: app_health
+      retries: 10
+      delay: 5
+      until: app_health.status in [200, 301, 302]
+      loop: "{{ selected_zones }}"
+      loop_control:
+        label: "{{ item.container_name }}"

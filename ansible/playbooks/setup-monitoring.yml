@@ -1,0 +1,6 @@
+---
+- name: Setup Monitoring Stack
+  hosts: monitoring
+  become: true
+  roles:
+    - role: node_exporter

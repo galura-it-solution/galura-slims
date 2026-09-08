@@ -1,0 +1,28 @@
+---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+  become: yes
+
+- name: Ensure nginx service running
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Deploy vhost template for galura-slims
+  template:
+    src: vhost.j2
+    dest: /etc/nginx/sites-available/galura_slims.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Reload nginx
+
+- name: Enable galura-slims vhost
+  file:
+    src: /etc/nginx/sites-available/galura_slims.conf
+    dest: /etc/nginx/sites-enabled/galura_slims.conf
+    state: link
+  notify: Reload nginx

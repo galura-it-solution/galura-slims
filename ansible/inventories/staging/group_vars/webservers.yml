@@ -1,0 +1,3 @@
+---
+vhost_name: galura_slims_staging.conf
+docker_network: galura_slims_staging_net

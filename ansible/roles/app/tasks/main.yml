@@ -1,0 +1,81 @@
+---
+- name: Ensure Docker network exists
+  community.docker.docker_network:
+    name: "{{ docker_network }}"
+    state: present
+
+- name: Start MariaDB database container for EDU zone
+  community.docker.docker_container:
+    name: galura-slims-edu-db
+    image: mariadb:lts
+    state: started
+    restart_policy: always
+    published_ports:
+      - "3307:3306"
+    volumes:
+      - slims_edu_dbdata:/var/lib/mysql
+    networks:
+      - name: "{{ docker_network }}"
+    env:
+      MARIADB_ROOT_PASSWORD: "{{ db_pass }}"
+      MARIADB_DATABASE: "senayan_edu"
+
+- name: Start SLiMS container for EDU zone (slims-edu.galura.id)
+  community.docker.docker_container:
+    name: galura-slims-edu
+    image: "{{ deploy_zones['edu']['image'] | default('ghcr.io/galura-it-solution/galura-slims-edu:latest') }}"
+    state: started
+    restart_policy: always
+    published_ports:
+      - "8081:80"
+    networks:
+      - name: "{{ docker_network }}"
+    volumes:
+      - slims_edu_appfiles:/var/www/html/files
+      - slims_edu_appimages:/var/www/html/images
+      - slims_edu_apprepo:/var/www/html/repository
+    env:
+      ENV: production
+      DB_HOST: galura-slims-edu-db
+      DB_PORT: "3306"
+      DB_USER: "{{ db_user }}"
+      DB_PASS: "{{ db_pass }}"
+      DB_NAME: "senayan_edu"
+
+- name: Start MariaDB database container for EBOOK zone
+  community.docker.docker_container:
+    name: galura-slims-ebook-db
+    image: mariadb:lts
+    state: started
+    restart_policy: always
+    published_ports:
+      - "3308:3306"
+    volumes:
+      - slims_ebook_dbdata:/var/lib/mysql
+    networks:
+      - name: "{{ docker_network }}"
+    env:
+      MARIADB_ROOT_PASSWORD: "{{ db_pass }}"
+      MARIADB_DATABASE: "senayan_ebook"
+
+- name: Start SLiMS container for EBOOK zone (slims-ebook.galura.id)
+  community.docker.docker_container:
+    name: galura-slims-ebook
+    image: "{{ deploy_zones['ebook']['image'] | default('ghcr.io/galura-it-solution/galura-slims-ebook:latest') }}"
+    state: started
+    restart_policy: always
+    published_ports:
+      - "8082:80"
+    networks:
+      - name: "{{ docker_network }}"
+    volumes:
+      - slims_ebook_appfiles:/var/www/html/files
+      - slims_ebook_appimages:/var/www/html/images
+      - slims_ebook_apprepo:/var/www/html/repository
+    env:
+      ENV: production
+      DB_HOST: galura-slims-ebook-db
+      DB_PORT: "3306"
+      DB_USER: "{{ db_user }}"
+      DB_PASS: "{{ db_pass }}"
+      DB_NAME: "senayan_ebook"

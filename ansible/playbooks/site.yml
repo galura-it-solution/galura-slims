@@ -1,0 +1,17 @@
+---
+- name: Provision base VPS infrastructure
+  hosts: all
+  become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  roles:
+    - role: firewall
+    - role: docker
+
+- name: Setup Web Server and Reverse Proxy
+  hosts: webservers
+  become: true
+  roles:
+    - role: nginx
+    - role: app

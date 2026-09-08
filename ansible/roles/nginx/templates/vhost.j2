@@ -1,0 +1,56 @@
+# Upstream definitions for SLiMS instances
+upstream slims_edu_backend {
+    server 127.0.0.1:{{ deploy_zones['edu']['app_port'] | default('8081') }};
+    keepalive 32;
+}
+
+upstream slims_ebook_backend {
+    server 127.0.0.1:{{ deploy_zones['ebook']['app_port'] | default('8082') }};
+    keepalive 32;
+}
+
+# ----------------------------------------------------
+# DOMAIN 1: slims-edu.galura.id (HTTP / HTTPS)
+# ----------------------------------------------------
+server {
+    listen 80;
+    server_name slims-edu.galura.id www.slims-edu.galura.id;
+
+    client_max_body_size 100m;
+
+    location / {
+        proxy_pass http://slims_edu_backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Timeouts for heavy upload / PDF export in SLiMS
+        proxy_read_timeout 300s;
+        proxy_connect_timeout 75s;
+        proxy_send_timeout 300s;
+    }
+}
+
+# ----------------------------------------------------
+# DOMAIN 2: slims-ebook.galura.id (HTTP / HTTPS)
+# ----------------------------------------------------
+server {
+    listen 80;
+    server_name slims-ebook.galura.id www.slims-ebook.galura.id;
+
+    client_max_body_size 100m;
+
+    location / {
+        proxy_pass http://slims_ebook_backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Timeouts for heavy upload / ebook reading in SLiMS
+        proxy_read_timeout 300s;
+        proxy_connect_timeout 75s;
+        proxy_send_timeout 300s;
+    }
+}

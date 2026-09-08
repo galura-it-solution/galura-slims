@@ -1,0 +1,121 @@
+---
+- name: Deploy SLiMS zone via VPS local Docker build
+  hosts: webservers
+  become: true
+  vars:
+    dotenv_values: "{{ hostvars[inventory_hostname].deploy_env | default({}) }}"
+    deploy_zone: "{{ lookup('env', 'DEPLOY_ZONE') | default('edu', true) }}"
+    docker_network: "{{ lookup('env', 'DEPLOY_DOCKER_NETWORK') | default(dotenv_values.DEPLOY_DOCKER_NETWORK | default('galura_slims_net'), true) }}"
+    db_user: "{{ lookup('env', 'DB_USER') | default(dotenv_values.DB_USER | default('root'), true) }}"
+    db_pass: "{{ lookup('env', 'DB_PASS') | default(dotenv_values.DB_PASS | default('root_password'), true) }}"
+
+    deploy_zones:
+      edu:
+        domain: slims-edu.galura.id
+        container_name: galura-slims-edu
+        db_container_name: galura-slims-edu-db
+        db_name: senayan_edu
+        db_port: "3307"
+        app_port: "8081"
+        container_port: "80"
+        db_volume: slims_edu_dbdata
+        volumes:
+          - slims_edu_appfiles:/var/www/html/files
+          - slims_edu_appimages:/var/www/html/images
+          - slims_edu_apprepo:/var/www/html/repository
+
+      ebook:
+        domain: slims-ebook.galura.id
+        container_name: galura-slims-ebook
+        db_container_name: galura-slims-ebook-db
+        db_name: senayan_ebook
+        db_port: "3308"
+        app_port: "8082"
+        container_port: "80"
+        db_volume: slims_ebook_dbdata
+        volumes:
+          - slims_ebook_appfiles:/var/www/html/files
+          - slims_ebook_appimages:/var/www/html/images
+          - slims_ebook_apprepo:/var/www/html/repository
+
+    selected_zone: "{{ deploy_zones[deploy_zone] }}"
+
+  tasks:
+    - name: Validate requested zone
+      ansible.builtin.assert:
+        that:
+          - deploy_zone in deploy_zones
+        fail_msg: "Zone '{{ deploy_zone }}' tidak dikenal."
+
+    - name: Ensure Docker network exists
+      community.docker.docker_network:
+        name: "{{ docker_network }}"
+        state: present
+
+    - name: Ensure DB container is running
+      community.docker.docker_container:
+        name: "{{ selected_zone.db_container_name }}"
+        image: mariadb:lts
+        state: started
+        restart_policy: always
+        published_ports:
+          - "{{ selected_zone.db_port }}:3306"
+        volumes:
+          - "{{ selected_zone.db_volume }}:/var/lib/mysql"
+        networks:
+          - name: "{{ docker_network }}"
+        env:
+          MARIADB_ROOT_PASSWORD: "{{ db_pass }}"
+          MARIADB_DATABASE: "{{ selected_zone.db_name }}"
+
+    - name: Build SLiMS Docker image on VPS
+      community.docker.docker_image:
+        name: "galura-slims-{{ deploy_zone }}:latest"
+        build:
+          path: "/opt/galura-slims/{{ deploy_zone }}"
+          dockerfile: Dockerfile
+        source: build
+
+    - name: Stop and remove old container
+      community.docker.docker_container:
+        name: "{{ selected_zone.container_name }}"
+        state: absent
+        force_kill: true
+
+    - name: Start SLiMS container
+      community.docker.docker_container:
+        name: "{{ selected_zone.container_name }}"
+        image: "galura-slims-{{ deploy_zone }}:latest"
+        state: started
+        restart_policy: always
+        published_ports:
+          - "{{ selected_zone.app_port }}:{{ selected_zone.container_port }}"
+        networks:
+          - name: "{{ docker_network }}"
+        volumes: "{{ selected_zone.volumes }}"
+        env:
+          ENV: production
+          DB_HOST: "{{ selected_zone.db_container_name }}"
+          DB_PORT: "3306"
+          DB_USER: "{{ db_user }}"
+          DB_PASS: "{{ db_pass }}"
+          DB_NAME: "{{ selected_zone.db_name }}"
+
+    - name: Deploy Nginx vhost configuration
+      ansible.builtin.template:
+        src: ../roles/nginx/templates/vhost.j2
+        dest: /etc/nginx/sites-available/galura_slims.conf
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Enable Nginx vhost
+      ansible.builtin.file:
+        src: /etc/nginx/sites-available/galura_slims.conf
+        dest: /etc/nginx/sites-enabled/galura_slims.conf
+        state: link
+
+    - name: Reload Nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded

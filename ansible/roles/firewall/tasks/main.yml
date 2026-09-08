@@ -1,0 +1,16 @@
+---
+- name: Install UFW
+  apt:
+    name: ufw
+    state: present
+
+- name: Allow defined ports
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+  loop: "{{ firewall_allowed_ports }}"
+
+- name: Enable UFW firewall
+  ufw:
+    state: enabled
+    policy: deny
