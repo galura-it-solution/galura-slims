@@ -1,5 +1,5 @@
 ---
-- name: Deploy SLiMS instances per zone
+- name: Deploy SLiMS instances via Local Build & Direct VPS Transfer
   hosts: webservers
   become: true
   serial: 1
@@ -7,23 +7,20 @@
   vars:
     dotenv_values: "{{ hostvars[inventory_hostname].deploy_env | default({}) }}"
     deploy_zone: "{{ lookup('env', 'DEPLOY_ZONE') | default('all', true) }}"
-    deploy_image_tag: "{{ lookup('env', 'DEPLOY_IMAGE_TAG') | default(dotenv_values.DEPLOY_IMAGE_TAG | default('latest'), true) }}"
-    deploy_image_repo: "{{ lookup('env', 'DEPLOY_IMAGE_REPO') | default(dotenv_values.DEPLOY_IMAGE_REPO | default('ghcr.io/galura-it-solution/galura-slims'), true) }}"
-    ghcr_username: "{{ lookup('env', 'GHCR_USERNAME') | default(dotenv_values.GHCR_USERNAME | default(''), true) }}"
-    ghcr_token: "{{ lookup('env', 'GHCR_TOKEN') | default(dotenv_values.GHCR_TOKEN | default(''), true) }}"
     docker_network: "{{ lookup('env', 'DEPLOY_DOCKER_NETWORK') | default(dotenv_values.DEPLOY_DOCKER_NETWORK | default('galura_slims_net'), true) }}"
     db_user: "{{ lookup('env', 'DB_USER') | default(dotenv_values.DB_USER | default('root'), true) }}"
     default_db_pass: "{{ lookup('env', 'DB_PASS') | default(dotenv_values.DB_PASS | default('root_password'), true) }}"
 
     deploy_zones:
       edu:
+        zone: edu
         domain: slims-edu.galura.id
         container_name: galura-slims-edu
         db_container_name: galura-slims-edu-db
         db_name: "{{ lookup('env', 'DB_NAME_EDU') | default(dotenv_values.DB_NAME_EDU | default('senayan_edu'), true) }}"
         db_pass: "{{ lookup('env', 'DB_PASS_EDU') | default(dotenv_values.DB_PASS_EDU | default(default_db_pass), true) }}"
         db_port: "{{ lookup('env', 'DEPLOY_DB_PORT_EDU') | default(dotenv_values.DEPLOY_DB_PORT_EDU | default('3307'), true) }}"
-        image: "{{ lookup('env', 'DEPLOY_IMAGE_EDU') | default(dotenv_values.DEPLOY_IMAGE_EDU | default(deploy_image_repo ~ '-edu:' ~ deploy_image_tag), true) }}"
+        local_image: "galura-slims-edu:latest"
         app_port: "{{ lookup('env', 'DEPLOY_PORT_EDU') | default(dotenv_values.DEPLOY_PORT_EDU | default('8081'), true) }}"
         container_port: "{{ lookup('env', 'DEPLOY_CONTAINER_PORT_EDU') | default(dotenv_values.DEPLOY_CONTAINER_PORT_EDU | default('80'), true) }}"
         volumes:
@@ -33,13 +30,14 @@
         db_volume: slims_edu_dbdata
 
       ebook:
+        zone: ebook
         domain: slims-ebook.galura.id
         container_name: galura-slims-ebook
         db_container_name: galura-slims-ebook-db
         db_name: "{{ lookup('env', 'DB_NAME_EBOOK') | default(dotenv_values.DB_NAME_EBOOK | default('senayan_ebook'), true) }}"
         db_pass: "{{ lookup('env', 'DB_PASS_EBOOK') | default(dotenv_values.DB_PASS_EBOOK | default(default_db_pass), true) }}"
         db_port: "{{ lookup('env', 'DEPLOY_DB_PORT_EBOOK') | default(dotenv_values.DEPLOY_DB_PORT_EBOOK | default('3308'), true) }}"
-        image: "{{ lookup('env', 'DEPLOY_IMAGE_EBOOK') | default(dotenv_values.DEPLOY_IMAGE_EBOOK | default(deploy_image_repo ~ '-ebook:' ~ deploy_image_tag), true) }}"
+        local_image: "galura-slims-ebook:latest"
         app_port: "{{ lookup('env', 'DEPLOY_PORT_EBOOK') | default(dotenv_values.DEPLOY_PORT_EBOOK | default('8082'), true) }}"
         container_port: "{{ lookup('env', 'DEPLOY_CONTAINER_PORT_EBOOK') | default(dotenv_values.DEPLOY_CONTAINER_PORT_EBOOK | default('80'), true) }}"
         volumes:
@@ -59,31 +57,58 @@
         fail_msg: "Zone '{{ item }}' tidak dikenal. Pilihan: {{ deploy_zones.keys() | list | join(', ') }}"
       loop: "{{ selected_zone_names }}"
 
-    - name: Ensure Docker network exists
+    - name: Build Docker image locally (No GHCR required)
+      community.docker.docker_image:
+        name: "{{ item.local_image }}"
+        build:
+          path: "{{ playbook_dir }}/../.."
+          dockerfile: Dockerfile
+        source: build
+      delegate_to: localhost
+      become: false
+      loop: "{{ selected_zones }}"
+      loop_control:
+        label: "{{ item.local_image }}"
+
+    - name: Save local Docker image to compressed archive
+      ansible.builtin.shell: "docker save {{ item.local_image }} | gzip -1 > /tmp/{{ item.local_image }}.tar.gz"
+      delegate_to: localhost
+      become: false
+      loop: "{{ selected_zones }}"
+      loop_control:
+        label: "{{ item.local_image }}"
+
+    - name: Transfer compressed image archive to VPS via Ansible Copy
+      ansible.builtin.copy:
+        src: "/tmp/{{ item.local_image }}.tar.gz"
+        dest: "/tmp/{{ item.local_image }}.tar.gz"
+        mode: "0644"
+      loop: "{{ selected_zones }}"
+      loop_control:
+        label: "{{ item.local_image }}"
+
+    - name: Load image into Docker on VPS and remove remote archive file
+      ansible.builtin.shell: "gunzip -c /tmp/{{ item.local_image }}.tar.gz | docker load && rm -f /tmp/{{ item.local_image }}.tar.gz"
+      loop: "{{ selected_zones }}"
+      loop_control:
+        label: "{{ item.local_image }}"
+
+    - name: Clean up local temporary archive file
+      ansible.builtin.file:
+        path: "/tmp/{{ item.local_image }}.tar.gz"
+        state: absent
+      delegate_to: localhost
+      become: false
+      loop: "{{ selected_zones }}"
+      loop_control:
+        label: "{{ item.local_image }}"
+
+    - name: Ensure Docker network exists on VPS
       community.docker.docker_network:
         name: "{{ docker_network }}"
         state: present
 
-    - name: Login to GHCR
-      community.docker.docker_login:
-        registry_url: ghcr.io
-        username: "{{ ghcr_username }}"
-        password: "{{ ghcr_token }}"
-      when:
-        - ghcr_username | length > 0
-        - ghcr_token | length > 0
-      no_log: true
-
-    - name: Pull container images for selected zones
-      community.docker.docker_image:
-        name: "{{ item.image }}"
-        source: pull
-      loop: "{{ selected_zones }}"
-      loop_control:
-        label: "{{ item.image }}"
-      when: ghcr_username | length > 0 or dotenv_values.DEPLOY_IMAGE_REPO is defined
-
-    - name: Ensure DB container is running for selected zones (Bound to localhost & Resource Limited)
+    - name: Ensure DB container is running for selected zones (Bound to localhost)
       community.docker.docker_container:
         name: "{{ item.db_container_name }}"
         image: mariadb:lts
@@ -114,10 +139,10 @@
       loop_control:
         label: "{{ item.container_name }}"
 
-    - name: Start application containers (Bound to localhost & Resource Limited)
+    - name: Start application containers on VPS using loaded local image
       community.docker.docker_container:
         name: "{{ item.container_name }}"
-        image: "{{ item.image }}"
+        image: "{{ item.local_image }}"
         state: started
         restart_policy: always
         published_ports:
@@ -157,6 +182,18 @@
       ansible.builtin.service:
         name: nginx
         state: reloaded
+
+    - name: Clean up unused and dangling Docker images on VPS
+      ansible.builtin.command: docker image prune -f
+      register: prune_vps_result
+      changed_when: false
+
+    - name: Clean up unused local Docker images
+      ansible.builtin.command: docker image prune -f
+      delegate_to: localhost
+      become: false
+      register: prune_local_result
+      changed_when: false
 
     - name: Wait for SLiMS HTTP response
       uri:

@@ -3,9 +3,6 @@
 # Domains: slims-edu.galura.id & slims-ebook.galura.id
 # ==============================================================================
 
-# Hide Nginx version signature
-server_tokens off;
-
 # ------------------------------------------------------------------------------
 # Rate Limiting & Connection Limiting Zones (Anti-DDoS / Anti-Flooding)
 # ------------------------------------------------------------------------------
@@ -48,41 +45,55 @@ upstream slims_ebook_backend {
 }
 
 # ------------------------------------------------------------------------------
-# DOMAIN 1: slims-edu.galura.id (HTTP / HTTPS)
+# DOMAIN 1: slims-edu.galura.id (HTTP -> HTTPS Redirect)
 # ------------------------------------------------------------------------------
 server {
     listen 80;
     server_name slims-edu.galura.id www.slims-edu.galura.id;
-
-    # Anti-Slowloris / Anti-DDoS Timeouts
-    client_body_timeout 15s;
-    client_header_timeout 15s;
-    keepalive_timeout 15s;
-    send_timeout 15s;
-
-    # Client upload limit
-    client_max_body_size 100m;
-
-    # Block bad bots & vulnerability scanners
-    if ($bad_bot = 1) {
-        return 403;
-    }
-
-    # Apply Connection Limit
-    limit_conn slims_conn_limit 25;
-
-    # Security Headers
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header X-Frame-Options "SAMEORIGIN" always;
-    add_header X-XSS-Protection "1; mode=block" always;
-    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-    add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
 
     # ACME Challenge for Let's Encrypt
     location ^~ /.well-known/acme-challenge/ {
         default_type "text/plain";
         root /var/www/html;
     }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+# SSL / HTTPS Block for slims-edu.galura.id (Using *.galura.id Wildcard Cert)
+server {
+    listen 443 ssl http2;
+    server_name slims-edu.galura.id www.slims-edu.galura.id;
+
+    ssl_certificate /etc/letsencrypt/live/galura.id/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/galura.id/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1d;
+
+    client_body_timeout 15s;
+    client_header_timeout 15s;
+    keepalive_timeout 15s;
+    send_timeout 15s;
+    client_max_body_size 100m;
+
+    if ($bad_bot = 1) {
+        return 403;
+    }
+
+    limit_conn slims_conn_limit 25;
+
+    # Hardened Security Headers
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
 
     # Static assets caching & Rate Limiting Bypass for assets
     location ~* \.(?:ico|css|js|gif|jpe?g|png|svg|woff2?|eot|ttf|otf|webp)$ {
@@ -106,7 +117,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
-    # Main Application Proxy with Rate Limiting
+    # Main Application Proxy
     location / {
         limit_req zone=slims_req_limit burst=30 nodelay;
         proxy_pass http://slims_edu_backend;
@@ -126,13 +137,31 @@ server {
     }
 }
 
-# SSL / HTTPS Block for slims-edu.galura.id
+# ------------------------------------------------------------------------------
+# DOMAIN 2: slims-ebook.galura.id (HTTP -> HTTPS Redirect)
+# ------------------------------------------------------------------------------
+server {
+    listen 80;
+    server_name slims-ebook.galura.id www.slims-ebook.galura.id;
+
+    # ACME Challenge for Let's Encrypt
+    location ^~ /.well-known/acme-challenge/ {
+        default_type "text/plain";
+        root /var/www/html;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+# SSL / HTTPS Block for slims-ebook.galura.id (Using *.galura.id Wildcard Cert)
 server {
     listen 443 ssl http2;
-    server_name slims-edu.galura.id www.slims-edu.galura.id;
+    server_name slims-ebook.galura.id www.slims-ebook.galura.id;
 
-    ssl_certificate /etc/letsencrypt/live/slims-edu.galura.id/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/slims-edu.galura.id/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/galura.id/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/galura.id/privkey.pem;
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
     ssl_prefer_server_ciphers on;
@@ -158,57 +187,6 @@ server {
     add_header X-XSS-Protection "1; mode=block" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
-
-    location / {
-        limit_req zone=slims_req_limit burst=30 nodelay;
-        proxy_pass http://slims_edu_backend;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-
-        proxy_read_timeout 300s;
-        proxy_connect_timeout 75s;
-        proxy_send_timeout 300s;
-        proxy_buffers 16 32k;
-        proxy_buffer_size 64k;
-    }
-}
-
-# ------------------------------------------------------------------------------
-# DOMAIN 2: slims-ebook.galura.id (HTTP / HTTPS)
-# ------------------------------------------------------------------------------
-server {
-    listen 80;
-    server_name slims-ebook.galura.id www.slims-ebook.galura.id;
-
-    client_body_timeout 15s;
-    client_header_timeout 15s;
-    keepalive_timeout 15s;
-    send_timeout 15s;
-    client_max_body_size 100m;
-
-    if ($bad_bot = 1) {
-        return 403;
-    }
-
-    limit_conn slims_conn_limit 25;
-
-    # Security Headers
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header X-Frame-Options "SAMEORIGIN" always;
-    add_header X-XSS-Protection "1; mode=block" always;
-    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-    add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
-
-    # ACME Challenge for Let's Encrypt
-    location ^~ /.well-known/acme-challenge/ {
-        default_type "text/plain";
-        root /var/www/html;
-    }
 
     # Static assets caching
     location ~* \.(?:ico|css|js|gif|jpe?g|png|svg|woff2?|eot|ttf|otf|webp)$ {
@@ -232,59 +210,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
-    # Main Application Proxy with Rate Limiting
-    location / {
-        limit_req zone=slims_req_limit burst=30 nodelay;
-        proxy_pass http://slims_ebook_backend;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-
-        proxy_read_timeout 300s;
-        proxy_connect_timeout 75s;
-        proxy_send_timeout 300s;
-        proxy_buffers 16 32k;
-        proxy_buffer_size 64k;
-    }
-}
-
-# SSL / HTTPS Block for slims-ebook.galura.id
-server {
-    listen 443 ssl http2;
-    server_name slims-ebook.galura.id www.slims-ebook.galura.id;
-
-    ssl_certificate /etc/letsencrypt/live/slims-ebook.galura.id/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/slims-ebook.galura.id/privkey.pem;
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
-    ssl_prefer_server_ciphers on;
-    ssl_session_cache shared:SSL:10m;
-    ssl_session_timeout 1d;
-
-    client_body_timeout 15s;
-    client_header_timeout 15s;
-    keepalive_timeout 15s;
-    send_timeout 15s;
-    client_max_body_size 100m;
-
-    if ($bad_bot = 1) {
-        return 403;
-    }
-
-    limit_conn slims_conn_limit 25;
-
-    # Hardened Security Headers
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header X-Frame-Options "SAMEORIGIN" always;
-    add_header X-XSS-Protection "1; mode=block" always;
-    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-    add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
-
+    # Main Application Proxy
     location / {
         limit_req zone=slims_req_limit burst=30 nodelay;
         proxy_pass http://slims_ebook_backend;

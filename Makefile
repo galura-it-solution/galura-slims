@@ -10,17 +10,18 @@ ZONE ?= all
 TAG ?= latest
 DEPLOY_EXTRA_VARS = deploy_zone=$(ZONE) deploy_image_tag=$(TAG)
 
-.PHONY: help deploy deploy-zone deploy-edu deploy-ebook deploy-ping deploy-syntax-check docker-build-push-zone docker-build-push-all
+.PHONY: help deploy deploy-zone deploy-edu deploy-ebook deploy-ping deploy-syntax-check docker-prune-vps
 
 help:
-	@printf "Galura SLiMS Ansible Deployment Commands\n\n"
+	@printf "Galura SLiMS Ansible Deployment Commands (Local Build -> Direct Push -> Auto Prune)\n\n"
 	@printf "  make deploy-ping                    Test koneksi SSH VPS dari .env\n"
 	@printf "  make deploy-syntax-check            Validasi syntax Ansible Playbook\n"
-	@printf "  make deploy                         Deploy semua zone (edu & ebook)\n"
+	@printf "  make deploy                         Build lokal, transfer ke VPS, run & prune image (semua zone)\n"
 	@printf "  make deploy-zone ZONE=edu           Deploy zone edu (slims-edu.galura.id)\n"
 	@printf "  make deploy-zone ZONE=ebook         Deploy zone ebook (slims-ebook.galura.id)\n"
 	@printf "  make deploy-edu                     Shortcut deploy zone edu\n"
 	@printf "  make deploy-ebook                   Shortcut deploy zone ebook\n"
+	@printf "  make docker-prune-vps               Hapus image docker gantung / tidak dipakai di VPS\n"
 
 $(ANSIBLE_LOCAL_TEMP):
 	mkdir -p $(ANSIBLE_LOCAL_TEMP)
@@ -43,3 +44,6 @@ deploy-edu:
 
 deploy-ebook:
 	$(MAKE) deploy-zone ZONE=ebook TAG="$(TAG)"
+
+docker-prune-vps: $(ANSIBLE_LOCAL_TEMP)
+	$(ANSIBLE_ENV) ansible -i $(ANSIBLE_INVENTORY) webservers -m command -a "docker image prune -f"

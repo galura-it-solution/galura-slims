@@ -32,6 +32,12 @@
     state: started
     enabled: yes
 
+- name: Add ansible user to docker group
+  user:
+    name: "{{ ansible_user | default('ubuntu') }}"
+    groups: docker
+    append: yes
+
 - name: Install Python Docker module
   pip:
     name: docker
