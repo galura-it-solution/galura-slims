@@ -1,16 +1,94 @@
 ---
-- name: Install UFW
+- name: Install UFW and Fail2ban
   apt:
-    name: ufw
+    name:
+      - ufw
+      - fail2ban
     state: present
+    update_cache: yes
 
-- name: Allow defined ports
+- name: Set UFW default security policies
+  ufw:
+    direction: "{{ item.direction }}"
+    policy: "{{ item.policy }}"
+  loop:
+    - { direction: 'incoming', policy: 'deny' }
+    - { direction: 'outgoing', policy: 'allow' }
+
+- name: Allow HTTP and HTTPS ports only
   ufw:
     rule: allow
     port: "{{ item }}"
-  loop: "{{ firewall_allowed_ports }}"
+  loop:
+    - "80/tcp"
+    - "443/tcp"
+
+- name: Rate limit SSH port (22/tcp)
+  ufw:
+    rule: limit
+    port: "22/tcp"
 
 - name: Enable UFW firewall
   ufw:
     state: enabled
-    policy: deny
+
+- name: Apply sysctl kernel Anti-DDoS & SYN-Flood protection settings
+  copy:
+    dest: /etc/sysctl.d/99-anti-ddos.conf
+    content: |
+      # SYN Flood Protection
+      net.ipv4.tcp_syncookies = 1
+      net.ipv4.tcp_max_syn_backlog = 4096
+      net.ipv4.tcp_synack_retries = 2
+
+      # Anti-IP Spoofing & ICMP Echo Broadcast Ignore (Anti-Ping Flood)
+      net.ipv4.icmp_echo_ignore_broadcasts = 1
+      net.ipv4.conf.all.rp_filter = 1
+      net.ipv4.conf.default.rp_filter = 1
+
+      # Disable Source Routing & ICMP Redirects
+      net.ipv4.conf.all.accept_source_route = 0
+      net.ipv4.conf.all.accept_redirects = 0
+      net.ipv4.conf.default.accept_redirects = 0
+
+      # Socket Time-Wait Optimization (Anti-Socket Exhaustion)
+      net.ipv4.tcp_fin_timeout = 15
+      net.ipv4.tcp_tw_reuse = 1
+    mode: '0644'
+  notify: Reload sysctl
+
+- name: Configure Fail2ban Jails for SSH & Nginx HTTP Protection
+  copy:
+    dest: /etc/fail2ban/jail.local
+    content: |
+      [DEFAULT]
+      bantime = 24h
+      findtime = 10m
+      maxretry = 5
+      banaction = ufw
+
+      [sshd]
+      enabled = true
+      port = ssh
+      logpath = %(sshd_log)s
+      backend = %(sshd_backend)s
+      maxretry = 3
+      bantime = 24h
+
+      [nginx-http-auth]
+      enabled = true
+      port = http,https
+      logpath = /var/log/nginx/error.log
+
+      [nginx-botsearch]
+      enabled = true
+      port = http,https
+      logpath = /var/log/nginx/access.log
+      maxretry = 2
+    mode: '0644'
+
+- name: Ensure Fail2ban service is running and enabled
+  service:
+    name: fail2ban
+    state: started
+    enabled: yes

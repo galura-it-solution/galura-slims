@@ -1,33 +1,36 @@
 ---
-- name: Ensure Docker network exists
+- name: "Ensure Docker network exists"
   community.docker.docker_network:
     name: "{{ docker_network }}"
     state: present
 
-- name: Start MariaDB database container for EDU zone
+- name: "Start MariaDB database container for EDU zone (Resource Limited & Localhost Bound)"
   community.docker.docker_container:
     name: galura-slims-edu-db
     image: mariadb:lts
     state: started
     restart_policy: always
     published_ports:
-      - "3307:3306"
+      - "127.0.0.1:3307:3306"
     volumes:
       - slims_edu_dbdata:/var/lib/mysql
     networks:
       - name: "{{ docker_network }}"
     env:
-      MARIADB_ROOT_PASSWORD: "{{ db_pass }}"
-      MARIADB_DATABASE: "senayan_edu"
+      MARIADB_ROOT_PASSWORD: "{{ db_pass_edu | default(db_pass) }}"
+      MARIADB_DATABASE: "{{ db_name_edu | default('senayan_edu') }}"
+    memory: "1g"
+    security_opts:
+      - "no-new-privileges:true"
 
-- name: Start SLiMS container for EDU zone (slims-edu.galura.id)
+- name: "Start SLiMS container for EDU zone (Resource Limited & Localhost Bound)"
   community.docker.docker_container:
     name: galura-slims-edu
     image: "{{ deploy_zones['edu']['image'] | default('ghcr.io/galura-it-solution/galura-slims-edu:latest') }}"
     state: started
     restart_policy: always
     published_ports:
-      - "8081:80"
+      - "127.0.0.1:8081:80"
     networks:
       - name: "{{ docker_network }}"
     volumes:
@@ -39,33 +42,39 @@
       DB_HOST: galura-slims-edu-db
       DB_PORT: "3306"
       DB_USER: "{{ db_user }}"
-      DB_PASS: "{{ db_pass }}"
-      DB_NAME: "senayan_edu"
+      DB_PASS: "{{ db_pass_edu | default(db_pass) }}"
+      DB_NAME: "{{ db_name_edu | default('senayan_edu') }}"
+    memory: "1g"
+    security_opts:
+      - "no-new-privileges:true"
 
-- name: Start MariaDB database container for EBOOK zone
+- name: "Start MariaDB database container for EBOOK zone (Resource Limited & Localhost Bound)"
   community.docker.docker_container:
     name: galura-slims-ebook-db
     image: mariadb:lts
     state: started
     restart_policy: always
     published_ports:
-      - "3308:3306"
+      - "127.0.0.1:3308:3306"
     volumes:
       - slims_ebook_dbdata:/var/lib/mysql
     networks:
       - name: "{{ docker_network }}"
     env:
-      MARIADB_ROOT_PASSWORD: "{{ db_pass }}"
-      MARIADB_DATABASE: "senayan_ebook"
+      MARIADB_ROOT_PASSWORD: "{{ db_pass_ebook | default(db_pass) }}"
+      MARIADB_DATABASE: "{{ db_name_ebook | default('senayan_ebook') }}"
+    memory: "1g"
+    security_opts:
+      - "no-new-privileges:true"
 
-- name: Start SLiMS container for EBOOK zone (slims-ebook.galura.id)
+- name: "Start SLiMS container for EBOOK zone (Resource Limited & Localhost Bound)"
   community.docker.docker_container:
     name: galura-slims-ebook
     image: "{{ deploy_zones['ebook']['image'] | default('ghcr.io/galura-it-solution/galura-slims-ebook:latest') }}"
     state: started
     restart_policy: always
     published_ports:
-      - "8082:80"
+      - "127.0.0.1:8082:80"
     networks:
       - name: "{{ docker_network }}"
     volumes:
@@ -77,5 +86,8 @@
       DB_HOST: galura-slims-ebook-db
       DB_PORT: "3306"
       DB_USER: "{{ db_user }}"
-      DB_PASS: "{{ db_pass }}"
-      DB_NAME: "senayan_ebook"
+      DB_PASS: "{{ db_pass_ebook | default(db_pass) }}"
+      DB_NAME: "{{ db_name_ebook | default('senayan_ebook') }}"
+    memory: "1g"
+    security_opts:
+      - "no-new-privileges:true"

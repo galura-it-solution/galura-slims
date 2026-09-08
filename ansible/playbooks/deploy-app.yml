@@ -13,14 +13,15 @@
     ghcr_token: "{{ lookup('env', 'GHCR_TOKEN') | default(dotenv_values.GHCR_TOKEN | default(''), true) }}"
     docker_network: "{{ lookup('env', 'DEPLOY_DOCKER_NETWORK') | default(dotenv_values.DEPLOY_DOCKER_NETWORK | default('galura_slims_net'), true) }}"
     db_user: "{{ lookup('env', 'DB_USER') | default(dotenv_values.DB_USER | default('root'), true) }}"
-    db_pass: "{{ lookup('env', 'DB_PASS') | default(dotenv_values.DB_PASS | default('root_password'), true) }}"
+    default_db_pass: "{{ lookup('env', 'DB_PASS') | default(dotenv_values.DB_PASS | default('root_password'), true) }}"
 
     deploy_zones:
       edu:
         domain: slims-edu.galura.id
         container_name: galura-slims-edu
         db_container_name: galura-slims-edu-db
-        db_name: senayan_edu
+        db_name: "{{ lookup('env', 'DB_NAME_EDU') | default(dotenv_values.DB_NAME_EDU | default('senayan_edu'), true) }}"
+        db_pass: "{{ lookup('env', 'DB_PASS_EDU') | default(dotenv_values.DB_PASS_EDU | default(default_db_pass), true) }}"
         db_port: "{{ lookup('env', 'DEPLOY_DB_PORT_EDU') | default(dotenv_values.DEPLOY_DB_PORT_EDU | default('3307'), true) }}"
         image: "{{ lookup('env', 'DEPLOY_IMAGE_EDU') | default(dotenv_values.DEPLOY_IMAGE_EDU | default(deploy_image_repo ~ '-edu:' ~ deploy_image_tag), true) }}"
         app_port: "{{ lookup('env', 'DEPLOY_PORT_EDU') | default(dotenv_values.DEPLOY_PORT_EDU | default('8081'), true) }}"
@@ -35,7 +36,8 @@
         domain: slims-ebook.galura.id
         container_name: galura-slims-ebook
         db_container_name: galura-slims-ebook-db
-        db_name: senayan_ebook
+        db_name: "{{ lookup('env', 'DB_NAME_EBOOK') | default(dotenv_values.DB_NAME_EBOOK | default('senayan_ebook'), true) }}"
+        db_pass: "{{ lookup('env', 'DB_PASS_EBOOK') | default(dotenv_values.DB_PASS_EBOOK | default(default_db_pass), true) }}"
         db_port: "{{ lookup('env', 'DEPLOY_DB_PORT_EBOOK') | default(dotenv_values.DEPLOY_DB_PORT_EBOOK | default('3308'), true) }}"
         image: "{{ lookup('env', 'DEPLOY_IMAGE_EBOOK') | default(dotenv_values.DEPLOY_IMAGE_EBOOK | default(deploy_image_repo ~ '-ebook:' ~ deploy_image_tag), true) }}"
         app_port: "{{ lookup('env', 'DEPLOY_PORT_EBOOK') | default(dotenv_values.DEPLOY_PORT_EBOOK | default('8082'), true) }}"
@@ -81,21 +83,24 @@
         label: "{{ item.image }}"
       when: ghcr_username | length > 0 or dotenv_values.DEPLOY_IMAGE_REPO is defined
 
-    - name: Ensure DB container is running for selected zones
+    - name: Ensure DB container is running for selected zones (Bound to localhost & Resource Limited)
       community.docker.docker_container:
         name: "{{ item.db_container_name }}"
         image: mariadb:lts
         state: started
         restart_policy: always
         published_ports:
-          - "{{ item.db_port }}:3306"
+          - "127.0.0.1:{{ item.db_port }}:3306"
         volumes:
           - "{{ item.db_volume }}:/var/lib/mysql"
         networks:
           - name: "{{ docker_network }}"
         env:
-          MARIADB_ROOT_PASSWORD: "{{ db_pass }}"
+          MARIADB_ROOT_PASSWORD: "{{ item.db_pass }}"
           MARIADB_DATABASE: "{{ item.db_name }}"
+        memory: "1g"
+        security_opts:
+          - "no-new-privileges:true"
       loop: "{{ selected_zones }}"
       loop_control:
         label: "{{ item.db_container_name }}"
@@ -109,14 +114,14 @@
       loop_control:
         label: "{{ item.container_name }}"
 
-    - name: Start application containers
+    - name: Start application containers (Bound to localhost & Resource Limited)
       community.docker.docker_container:
         name: "{{ item.container_name }}"
         image: "{{ item.image }}"
         state: started
         restart_policy: always
         published_ports:
-          - "{{ item.app_port }}:{{ item.container_port }}"
+          - "127.0.0.1:{{ item.app_port }}:{{ item.container_port }}"
         networks:
           - name: "{{ docker_network }}"
         volumes: "{{ item.volumes }}"
@@ -125,8 +130,11 @@
           DB_HOST: "{{ item.db_container_name }}"
           DB_PORT: "3306"
           DB_USER: "{{ db_user }}"
-          DB_PASS: "{{ db_pass }}"
+          DB_PASS: "{{ item.db_pass }}"
           DB_NAME: "{{ item.db_name }}"
+        memory: "1g"
+        security_opts:
+          - "no-new-privileges:true"
       loop: "{{ selected_zones }}"
       loop_control:
         label: "{{ item.container_name }}"

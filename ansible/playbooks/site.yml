@@ -1,5 +1,5 @@
 ---
-- name: Provision base VPS infrastructure
+- name: Provision base VPS infrastructure & Security
   hosts: all
   become: true
   vars:
@@ -9,9 +9,10 @@
     - role: firewall
     - role: docker
 
-- name: Setup Web Server and Reverse Proxy
+- name: Setup Web Server, SLiMS Apps, and Automated SSL Certbot
   hosts: webservers
   become: true
   roles:
     - role: nginx
     - role: app
+    - role: certbot

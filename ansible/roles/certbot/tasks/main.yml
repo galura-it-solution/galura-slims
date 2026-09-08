@@ -1,0 +1,49 @@
+---
+- name: Install Certbot, Nginx Certbot plugin, and Cron
+  apt:
+    name:
+      - certbot
+      - python3-certbot-nginx
+      - cron
+    state: present
+    update_cache: yes
+
+- name: Check if SSL certificate exists for slims-edu.galura.id
+  stat:
+    path: /etc/letsencrypt/live/slims-edu.galura.id/fullchain.pem
+  register: cert_edu
+
+- name: Obtain Let's Encrypt SSL certificate for slims-edu.galura.id
+  command: >
+    certbot --nginx --non-interactive --agree-tos
+    -m admin@galura.id
+    -d slims-edu.galura.id
+  when: not cert_edu.stat.exists
+  ignore_errors: yes
+
+- name: Check if SSL certificate exists for slims-ebook.galura.id
+  stat:
+    path: /etc/letsencrypt/live/slims-ebook.galura.id/fullchain.pem
+  register: cert_ebook
+
+- name: Obtain Let's Encrypt SSL certificate for slims-ebook.galura.id
+  command: >
+    certbot --nginx --non-interactive --agree-tos
+    -m admin@galura.id
+    -d slims-ebook.galura.id
+  when: not cert_ebook.stat.exists
+  ignore_errors: yes
+
+- name: Setup daily cron job for automatic Let's Encrypt certificate renewal
+  cron:
+    name: "Certbot Automatic SSL Renewal"
+    minute: "0"
+    hour: "3"
+    job: "certbot renew --quiet --post-hook 'systemctl reload nginx'"
+
+- name: Ensure Certbot systemd timer is enabled and active
+  service:
+    name: certbot.timer
+    state: started
+    enabled: yes
+  ignore_errors: yes
