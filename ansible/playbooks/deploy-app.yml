@@ -71,7 +71,7 @@
         label: "{{ item.local_image }}"
 
     - name: Save local Docker image to compressed archive
-      ansible.builtin.shell: "docker save {{ item.local_image }} | gzip -1 > /tmp/{{ item.local_image }}.tar.gz"
+      ansible.builtin.shell: "docker save {{ item.local_image }} | gzip -1 > /tmp/galura-slims-{{ item.zone }}.tar.gz"
       delegate_to: localhost
       become: false
       loop: "{{ selected_zones }}"
@@ -81,7 +81,7 @@
     - name: Transfer compressed image archive to VPS via rsync (Fast SSH Transfer)
       ansible.builtin.shell: >
         rsync -avz -e "ssh -o StrictHostKeyChecking=no -i {{ ansible_ssh_private_key_file }}"
-        /tmp/{{ item.local_image }}.tar.gz {{ ansible_user }}@{{ ansible_host }}:/tmp/{{ item.local_image }}.tar.gz
+        /tmp/galura-slims-{{ item.zone }}.tar.gz {{ ansible_user }}@{{ ansible_host }}:/home/ubuntu/galura-slims-{{ item.zone }}.tar.gz
       delegate_to: localhost
       become: false
       loop: "{{ selected_zones }}"
@@ -89,14 +89,14 @@
         label: "{{ item.local_image }}"
 
     - name: Load image into Docker on VPS and remove remote archive file
-      ansible.builtin.shell: "gunzip -c /tmp/{{ item.local_image }}.tar.gz | docker load && rm -f /tmp/{{ item.local_image }}.tar.gz"
+      ansible.builtin.shell: "gunzip -c /home/ubuntu/galura-slims-{{ item.zone }}.tar.gz | sudo docker load && rm -f /home/ubuntu/galura-slims-{{ item.zone }}.tar.gz"
       loop: "{{ selected_zones }}"
       loop_control:
         label: "{{ item.local_image }}"
 
     - name: Clean up local temporary archive file
       ansible.builtin.file:
-        path: "/tmp/{{ item.local_image }}.tar.gz"
+        path: "/tmp/galura-slims-{{ item.zone }}.tar.gz"
         state: absent
       delegate_to: localhost
       become: false
