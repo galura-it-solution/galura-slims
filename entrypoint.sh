@@ -43,8 +43,18 @@ EOF
 echo "PHP configuration file created: /var/www/html/config/database.php"
 cat /var/www/html/config/database.php
 
-# Ensure directory permissions for mounted volumes
-chown -R www-data:www-data /var/www/html/files /var/www/html/images /var/www/html/repository 2>/dev/null || true
+# Ensure all sample configuration files exist
+for sample in /var/www/html/config/*.sample.php; do
+    [ -f "$sample" ] || continue
+    target="/var/www/html/config/$(basename "$sample" .sample.php).php"
+    if [ ! -f "$target" ]; then
+        cp "$sample" "$target"
+    fi
+done
+
+# Ensure directory permissions for config and mounted volumes
+chown -R www-data:www-data /var/www/html/config /var/www/html/files /var/www/html/images /var/www/html/repository 2>/dev/null || true
+chmod -R 775 /var/www/html/config /var/www/html/files /var/www/html/images /var/www/html/repository 2>/dev/null || true
 
 # Wait for database to be ready
 echo "Waiting for database to be ready..."

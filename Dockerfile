@@ -21,9 +21,7 @@ RUN composer install
 
 RUN mkdir -p /usr/local/share/slims && cp /var/www/html/install/senayan.sql /usr/local/share/slims/senayan.sql
 
-RUN chown -R www-data:www-data /var/www/html/files
-RUN chown -R www-data:www-data /var/www/html/images
-RUN chown -R www-data:www-data /var/www/html/repository
+RUN chown -R www-data:www-data /var/www/html
 RUN rm -rf /var/www/html/install
 
 COPY entrypoint.sh /entrypoint.sh

@@ -64,6 +64,7 @@
           path: "{{ playbook_dir }}/../.."
           dockerfile: Dockerfile
         source: build
+        force_source: true
       delegate_to: localhost
       become: false
       loop: "{{ selected_zones }}"
@@ -205,7 +206,7 @@
           - 302
         timeout: 10
       register: app_health
-      retries: 10
+      retries: 15
       delay: 5
       until: app_health.status in [200, 301, 302]
       loop: "{{ selected_zones }}"
