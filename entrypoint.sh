@@ -43,6 +43,9 @@ EOF
 echo "PHP configuration file created: /var/www/html/config/database.php"
 cat /var/www/html/config/database.php
 
+# Ensure directory permissions for mounted volumes
+chown -R www-data:www-data /var/www/html/files /var/www/html/images /var/www/html/repository 2>/dev/null || true
+
 # Wait for database to be ready
 echo "Waiting for database to be ready..."
 until php -r "
@@ -53,6 +56,27 @@ exit(\$conn->connect_error ? 1 : 0);
     sleep 2
 done
 echo "Database is ready."
+
+# Auto-initialize database schema if tables don't exist yet
+echo "Checking database schema..."
+TABLE_EXISTS=$(php -r "
+\$conn = new mysqli(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'), (int)getenv('DB_PORT'));
+\$res = \$conn->query(\"SHOW TABLES LIKE 'setting'\");
+echo (\$res && \$res->num_rows > 0) ? '1' : '0';
+\$conn->close();
+" 2>/dev/null)
+
+if [ "$TABLE_EXISTS" != "1" ]; then
+    if [ -f "/usr/local/share/slims/senayan.sql" ]; then
+        echo "Database tables missing. Importing base schema from /usr/local/share/slims/senayan.sql..."
+        mysql -h "${DB_HOST}" -P "${DB_PORT}" -u "${DB_USER}" -p"${DB_PASS}" "${DB_NAME}" < /usr/local/share/slims/senayan.sql
+        echo "Base schema imported successfully."
+    else
+        echo "Warning: /usr/local/share/slims/senayan.sql not found!"
+    fi
+else
+    echo "Database schema already initialized."
+fi
 
 # Randomize admin password on first startup only
 INIT_FLAG="/var/www/html/files/.admin_initialized"

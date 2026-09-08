@@ -80,7 +80,7 @@
 
     - name: Transfer compressed image archive to VPS via rsync (Fast SSH Transfer)
       ansible.builtin.shell: >
-        rsync -avz -e "ssh -o StrictHostKeyChecking=no -i {{ ansible_ssh_private_key_file }}"
+        rsync -avz --partial -e "ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=15 -o ServerAliveCountMax=5 -o TCPKeepAlive=yes -i {{ ansible_ssh_private_key_file }}"
         /tmp/galura-slims-{{ item.zone }}.tar.gz {{ ansible_user }}@{{ ansible_host }}:/home/ubuntu/galura-slims-{{ item.zone }}.tar.gz
       delegate_to: localhost
       become: false

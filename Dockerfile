@@ -1,7 +1,7 @@
 FROM php:8.3.13-apache
 
 RUN apt-get update \
-    && apt-get install -y libicu-dev libxml2-dev libzip-dev libpng-dev libonig-dev libjpeg62-turbo libjpeg62-turbo-dev libfreetype6-dev \
+    && apt-get install -y libicu-dev libxml2-dev libzip-dev libpng-dev libonig-dev libjpeg62-turbo libjpeg62-turbo-dev libfreetype6-dev default-mysql-client \
     && docker-php-ext-install intl xml xmlwriter gettext mbstring zip mysqli pdo_mysql \
     && docker-php-ext-enable intl xml xmlwriter gettext mbstring zip mysqli pdo_mysql \
     && docker-php-ext-install -j$(nproc) iconv \
@@ -18,6 +18,8 @@ WORKDIR /var/www/html
 COPY . /var/www/html
 
 RUN composer install
+
+RUN mkdir -p /usr/local/share/slims && cp /var/www/html/install/senayan.sql /usr/local/share/slims/senayan.sql
 
 RUN chown -R www-data:www-data /var/www/html/files
 RUN chown -R www-data:www-data /var/www/html/images
