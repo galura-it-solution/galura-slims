@@ -1,0 +1,250 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+6 0 obj
+<< /Length 3226 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+% Header Text
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (PERPUSTAKAAN DIGITAL GALURA - E-BOOK REPOSITORY) Tj
+/F1 9 Tf 0 -16 Td (Koleksi Buku Elektronik Resmi Berstandar RDA | Akses Terbuka Perpustakaan) Tj
+ET
+
+% Title & Subtitle
+0.1 0.1 0.1 rg
+BT /F2 16 Tf 45 695 Td (Cybersecurity Essentials: Analisis Serangan Siber, Penetrati) Tj
+ET
+
+BT /F2 15 Tf 45 675 Td (on Testing & Server Hardening) Tj ET
+
+0.2 0.3 0.4 rg
+BT /F3 11 Tf 45 655 Td (Panduan Praktis Mitigasi Serangan Zero-Day, Audit Keamanan UFW/Fail2ban, dan Arsitektur Zero Trust) Tj ET
+
+% Metadata Box Frame
+0.82 0.86 0.92 rg
+45 425 522 210 re f
+0.3 0.45 0.65 RG
+1 w
+45 425 522 210 re S
+
+% Metadata Box Header
+0.15 0.28 0.52 rg
+45 615 522 20 re f
+1 1 1 rg
+BT /F2 10 Tf 55 621 Td (KATALOGISASI DALAM TERBITAN (KDT) / BIBLIOGRAPHIC METADATA) Tj ET
+
+% Metadata Fields
+0.1 0.1 0.1 rg
+BT /F2 9 Tf 55 595 Td (Penulis Utama    :) Tj /F1 9 Tf 90 0 Td (Dr. Ir. Rian Pratama, M.Sc., Kevin Mitnick) Tj ET
+BT /F2 9 Tf 55 577 Td (Editor / Redaksi :) Tj /F1 9 Tf 90 0 Td (Tim Keamanan Siber Galura CERT) Tj ET
+BT /F2 9 Tf 55 559 Td (Penerbit & Tahun :) Tj /F1 9 Tf 90 0 Td (Galura Tech Publishing bekerjasama dengan CyberShield Press (2024)) Tj ET
+BT /F2 9 Tf 55 541 Td (Nomor ISBN / e-ISBN :) Tj /F1 9 Tf 90 0 Td (978-623-01-3893-6) Tj ET
+BT /F2 9 Tf 55 523 Td (Nomor Panggil (Call) :) Tj /F1 9 Tf 90 0 Td (EB 005.8 PRA c  [Klasifikasi DDC: 005.8]) Tj ET
+BT /F2 9 Tf 55 505 Td (Subjek / Kategori:) Tj /F1 9 Tf 90 0 Td (Cybersecurity & Ethical Hacking) Tj ET
+BT /F2 9 Tf 55 487 Td (Seri Publikasi   :) Tj /F1 9 Tf 90 0 Td (Seri Pertahanan Siber Nasional; Jilid 1) Tj ET
+BT /F2 9 Tf 55 469 Td (Deskripsi Fisik  :) Tj /F1 9 Tf 90 0 Td (1 File PDF (xxii, 388 halaman : ilus. ; 25 cm)) Tj ET
+BT /F2 9 Tf 55 451 Td (Aksesibilitas    :) Tj /F2 9 Tf 90 0 Td (Hak Cipta Digital - Akses Terbuka Pemustaka (Public Open Access)) Tj ET
+BT /F2 9 Tf 55 433 Td (Bahasa & Format  :) Tj /F1 9 Tf 90 0 Td (Bahasa Indonesia | Format PDF Digital (High Resolution Text)) Tj ET
+
+% Synopsis Section
+0.08 0.18 0.36 rg
+BT /F2 12 Tf 45 400 Td (RINGKASAN & SINOPSIS EKSEKUTIF BUKU) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 392 m 567 392 l S
+
+% Synopsis Paragraph 1
+0.15 0.15 0.15 rg
+BT /F1 9 Tf 45 376 Td (Di era digital yang serba terhubung, keamanan informasi bukan lagi opsi tambahan) Tj ET
+BT /F1 9 Tf 45 362 Td (melainkan fondasi kelangsungan bisnis. Buku ini mengupas metodologi serangan siber) Tj ET
+BT /F1 9 Tf 45 348 Td (modern dan langkah preventif berstandar industri perbankan dan militer.) Tj ET
+BT /F1 9 Tf 45 328 Td (Menyajikan panduan praktis hardening server Linux Ubuntu, mitigasi serangan DDoS lapis) Tj ET
+BT /F1 9 Tf 45 314 Td (4 dan 7, konfigurasi firewall UFW dan deteksi intrusi Fail2ban, analisis log forensik) Tj ET
+BT /F1 9 Tf 45 300 Td (auditd/ELK, pencegahan SQL Injection, XSS, SSRF, serta penerapan prinsip Zero Trust) Tj ET
+BT /F1 9 Tf 45 286 Td (Network Access.) Tj ET
+
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Cybersecurity Essentials: Analisis Serangan S | e-ISBN: 978-623-01-3893-6) Tj
+/F2 8 Tf 440 0 Td (Halaman 1 dari 3) Tj
+ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 3208 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (DAFTAR ISI LENGKAP BUKU (TABLE OF CONTENTS)) Tj
+/F1 9 Tf 0 -16 Td (Cybersecurity Essentials: Analisis Serangan Siber, Penetration Testing - Dr. Ir. Rian Pratama, M.Sc., Kevin Mitnick) Tj
+ET
+
+0.1 0.1 0.1 rg
+BT /F2 12 Tf 45 690 Td (STRUKTUR BAB & SUB-BAHASAN MATERI) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 682 m 567 682 l S
+
+% Table of Contents Items
+0.15 0.15 0.15 rg
+BT /F2 10 Tf 45 660 Td (Bagian Awal: Prakata & Pengantar Penerbit) Tj /F1 9 Tf 420 0 Td (v - viii) Tj ET
+BT /F2 10 Tf 45 642 Td (Lembar Hak Cipta & Standar Lisensi Digital) Tj /F1 9 Tf 420 0 Td (ix) Tj ET
+
+BT /F2 9.5 Tf 45 618 Td (Bab 1: Lanskap Ancaman Siber Modern & Vektor Serangan) Tj /F1 9 Tf 420 0 Td (hlm. 1 - 44) Tj ET
+
+BT /F1 8.5 Tf 60 603 Td (- Ransomware & Supply Chain Attack) Tj ET
+
+BT /F1 8.5 Tf 60 590 Td (- Anatomi Cyber Kill Chain) Tj ET
+
+BT /F1 8.5 Tf 60 577 Td (- Mitigasi Kerentanan OWASP Top 10) Tj ET
+
+BT /F2 9.5 Tf 45 559 Td (Bab 2: Hardening Sistem Operasi Server Linux Produksi) Tj /F1 9 Tf 420 0 Td (hlm. 45 - 122) Tj ET
+
+BT /F1 8.5 Tf 60 544 Td (- Kernel Sysctl Optimization) Tj ET
+
+BT /F1 8.5 Tf 60 531 Td (- Manajemen Akses SSH Kunci Kriptografi) Tj ET
+
+BT /F1 8.5 Tf 60 518 Td (- Penerapan AppArmor & SELinux) Tj ET
+
+BT /F2 9.5 Tf 45 500 Td (Bab 3: Proteksi Jaringan, Firewall UFW & Deteksi Intrusi) Tj /F1 9 Tf 420 0 Td (hlm. 123 - 204) Tj ET
+
+BT /F1 8.5 Tf 60 485 Td (- Rule Firewall Ketat & Rate Limiting) Tj ET
+
+BT /F1 8.5 Tf 60 472 Td (- Konfigurasi Fail2ban Proaktif) Tj ET
+
+BT /F1 8.5 Tf 60 459 Td (- Analisis Paket Wireshark & Snort) Tj ET
+
+BT /F2 9.5 Tf 45 441 Td (Bab 4: Metodologi Penetration Testing & Vulnerability Assessment) Tj /F1 9 Tf 420 0 Td (hlm. 205 - 296) Tj ET
+
+BT /F1 8.5 Tf 60 426 Td (- Reconnaissance & Scanning Nmap) Tj ET
+
+BT /F1 8.5 Tf 60 413 Td (- Eksploitasi Terkontrol Metasploit) Tj ET
+
+BT /F1 8.5 Tf 60 400 Td (- Pelaporan & Remediasi Risiko) Tj ET
+
+BT /F2 9.5 Tf 45 382 Td (Bab 5: Implementasi Arsitektur Zero Trust & Kriptografi) Tj /F1 9 Tf 420 0 Td (hlm. 297 - 370) Tj ET
+
+BT /F1 8.5 Tf 60 367 Td (- Prinsip Never Trust Always Verify) Tj ET
+
+BT /F1 8.5 Tf 60 354 Td (- Manajemen Identitas Terpusat IAM) Tj ET
+
+BT /F1 8.5 Tf 60 341 Td (- Enkripsi Data In-Transit & At-Rest) Tj ET
+
+BT /F2 10 Tf 45 323 Td (Glosarium Istilah & Indeks Subjek Teknis) Tj /F1 9 Tf 420 0 Td (hlm. 450) Tj ET
+BT /F2 10 Tf 45 305 Td (Daftar Pustaka & Rujukan Standar Industri) Tj /F1 9 Tf 420 0 Td (hlm. 465) Tj ET
+
+% Info Box Bottom
+0.94 0.96 0.98 rg 45 60 522 65 re f
+0.4 0.55 0.75 RG 1 w 45 60 522 65 re S
+0.1 0.2 0.4 rg
+BT /F2 9.5 Tf 55 105 Td (Petunjuk Pembaca Digital Perpustakaan Galura SLiMS:) Tj
+/F1 8.5 Tf 0 -16 Td (Daftar isi ini menyajikan sistematika pembahasan utuh yang terdapat dalam edisi cetak dan digital.) Tj
+0 -13 Td (Pembaca dapat langsung meloncat ke bab materi tertentu menggunakan fitur navigasi PDF viewer SLiMS.) Tj
+ET
+
+% Page 2 Footer
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Cybersecurity Essentials: Analisis Serangan S | Daftar Isi) Tj
+/F2 8 Tf 440 0 Td (Halaman 2 dari 3) Tj
+ET
+
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 2076 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (CUPLIKAN MATERI BUKU: SAMPLE CHAPTER) Tj
+/F1 9 Tf 0 -16 Td (Cybersecurity Essentials: Analisis Serangan Siber, Penetration Testing - Dr. Ir. Rian Pratama, M.Sc., Kevin Mitnick) Tj
+ET
+
+0.1 0.1 0.1 rg
+BT /F2 13 Tf 45 690 Td (Bab 1: Paradigma Zero Trust: Jangan Pernah Percaya, Selalu Verifikasi) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 680 m 567 680 l S
+
+0.15 0.15 0.15 rg
+BT /F1 9 Tf 45 660 Td (Model keamanan tradisional berbasis perimeter berasumsi bahwa segala entitas di dalam) Tj ET
+BT /F1 9 Tf 45 646 Td (jaringan intranet adalah pihak yang aman. Paradigma usang ini telah runtuh seiring) Tj ET
+BT /F1 9 Tf 45 632 Td (maraknya komputasi awan, kerja jarak jauh, dan serangan phishing canggih yang mampu) Tj ET
+BT /F1 9 Tf 45 618 Td (menembus VPN perusahaan.) Tj ET
+BT /F1 9 Tf 45 594 Td (Zero Trust mewajibkan setiap permintaan otentikasi dan otorisasi diperiksa secara ketat) Tj ET
+BT /F1 9 Tf 45 580 Td (sebelum akses diberikan, tidak peduli apakah permintaan berasal dari dalam gedung kantor) Tj ET
+BT /F1 9 Tf 45 566 Td (atau dari kafe di belahan dunia lain. Identitas pengguna dan kesehatan perangkat menjadi) Tj ET
+BT /F1 9 Tf 45 552 Td (perimeter keamanan baru.) Tj ET
+
+% Library Service Box
+0.90 0.95 0.92 rg 45 80 522 95 re f
+0.2 0.55 0.35 RG 1.2 w 45 80 522 95 re S
+0.1 0.3 0.2 rg
+BT /F2 10.5 Tf 55 155 Td (LAYANAN PEMINJAMAN E-BOOK RESMI PERPUSTAKAAN GALURA) Tj
+/F1 9 Tf 0 -18 Td (Naskah di atas adalah sampel cuplikan resmi dari repositori Perpustakaan Digital Galura SLiMS.) Tj
+0 -14 Td (Pemustaka terdaftar dapat meminjam atau membaca edisi digital lengkap melalui portal OPAC SLiMS) Tj
+0 -14 Td (atau mengajukan permohonan melalui layanan sirkulasi perpustakaan: https://slims-ebook.galura.id) Tj
+ET
+
+% Page 3 Footer
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Cybersecurity Essentials: Analisis Serangan S | Cuplikan Materi) Tj
+/F2 8 Tf 440 0 Td (Halaman 3 dari 3) Tj
+ET
+
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000134 00000 n 
+0000000204 00000 n 
+0000000279 00000 n 
+0000000357 00000 n 
+0000003635 00000 n 
+0000003781 00000 n 
+0000007041 00000 n 
+0000007187 00000 n 
+0000009316 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R >>
+startxref
+9464
+%%EOF

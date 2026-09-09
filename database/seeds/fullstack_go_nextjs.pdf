@@ -1,0 +1,251 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+6 0 obj
+<< /Length 3272 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+% Header Text
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (PERPUSTAKAAN DIGITAL GALURA - E-BOOK REPOSITORY) Tj
+/F1 9 Tf 0 -16 Td (Koleksi Buku Elektronik Resmi Berstandar RDA | Akses Terbuka Perpustakaan) Tj
+ET
+
+% Title & Subtitle
+0.1 0.1 0.1 rg
+BT /F2 16 Tf 45 695 Td (Full-Stack Modern dengan Go & Next.js: Dari Nol Hingga Deplo) Tj
+ET
+
+BT /F2 15 Tf 45 675 Td (yment VPS Produksi) Tj ET
+
+0.2 0.3 0.4 rg
+BT /F3 11 Tf 45 655 Td (Integrasi REST API Fiber Berkualitas Tinggi, PostgreSQL, Redis Caching, dan Next.js 14 App Router) Tj ET
+
+% Metadata Box Frame
+0.82 0.86 0.92 rg
+45 425 522 210 re f
+0.3 0.45 0.65 RG
+1 w
+45 425 522 210 re S
+
+% Metadata Box Header
+0.15 0.28 0.52 rg
+45 615 522 20 re f
+1 1 1 rg
+BT /F2 10 Tf 55 621 Td (KATALOGISASI DALAM TERBITAN (KDT) / BIBLIOGRAPHIC METADATA) Tj ET
+
+% Metadata Fields
+0.1 0.1 0.1 rg
+BT /F2 9 Tf 55 595 Td (Penulis Utama    :) Tj /F1 9 Tf 90 0 Td (Eko Kurniawan Khannedy, Sandhika Galih) Tj ET
+BT /F2 9 Tf 55 577 Td (Editor / Redaksi :) Tj /F1 9 Tf 90 0 Td (Tim Pengembang Galura Software House) Tj ET
+BT /F2 9 Tf 55 559 Td (Penerbit & Tahun :) Tj /F1 9 Tf 90 0 Td (Galura Tech Publishing (2024)) Tj ET
+BT /F2 9 Tf 55 541 Td (Nomor ISBN / e-ISBN :) Tj /F1 9 Tf 90 0 Td (978-623-01-3892-9) Tj ET
+BT /F2 9 Tf 55 523 Td (Nomor Panggil (Call) :) Tj /F1 9 Tf 90 0 Td (EB 005.133 KHA f  [Klasifikasi DDC: 005.133]) Tj ET
+BT /F2 9 Tf 55 505 Td (Subjek / Kategori:) Tj /F1 9 Tf 90 0 Td (Full-Stack Web Development) Tj ET
+BT /F2 9 Tf 55 487 Td (Seri Publikasi   :) Tj /F1 9 Tf 90 0 Td (Seri Pengembang Web Indonesia Modern; Jilid 1) Tj ET
+BT /F2 9 Tf 55 469 Td (Deskripsi Fisik  :) Tj /F1 9 Tf 90 0 Td (1 File PDF (xx, 412 halaman : ilus. ; 25 cm)) Tj ET
+BT /F2 9 Tf 55 451 Td (Aksesibilitas    :) Tj /F2 9 Tf 90 0 Td (Hak Cipta Digital - Akses Terbuka Pemustaka (Public Open Access)) Tj ET
+BT /F2 9 Tf 55 433 Td (Bahasa & Format  :) Tj /F1 9 Tf 90 0 Td (Bahasa Indonesia | Format PDF Digital (High Resolution Text)) Tj ET
+
+% Synopsis Section
+0.08 0.18 0.36 rg
+BT /F2 12 Tf 45 400 Td (RINGKASAN & SINOPSIS EKSEKUTIF BUKU) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 392 m 567 392 l S
+
+% Synopsis Paragraph 1
+0.15 0.15 0.15 rg
+BT /F1 9 Tf 45 376 Td (Kombinasi antara efisiensi kompilasi native bahasa Go dan kekayaan interaksi antarmuka) Tj ET
+BT /F1 9 Tf 45 362 Td (Next.js telah menjadi standar emas baru dalam rekayasa aplikasi web modern yang menuntut) Tj ET
+BT /F1 9 Tf 45 348 Td (performa puncak dan SEO optimal. Buku ini menuntun pembaca membangun aplikasi enterprise) Tj ET
+BT /F1 9 Tf 45 334 Td (dari nol.) Tj ET
+BT /F1 9 Tf 45 314 Td (Membahas pembuatan backend API Go dengan framework Fiber, manajemen koneksi database) Tj ET
+BT /F1 9 Tf 45 300 Td (PostgreSQL via ORM GORM, otentikasi JWT aman berbasis HTTP-Only Cookie, manajemen state) Tj ET
+BT /F1 9 Tf 45 286 Td (TanStack Query pada Next.js Server Components, hingga otomatisasi deployment menggunakan) Tj ET
+BT /F1 9 Tf 45 272 Td (Docker dan Nginx Reverse Proxy.) Tj ET
+
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Full-Stack Modern dengan Go & Next.js: Dari N | e-ISBN: 978-623-01-3892-9) Tj
+/F2 8 Tf 440 0 Td (Halaman 1 dari 3) Tj
+ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 3145 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (DAFTAR ISI LENGKAP BUKU (TABLE OF CONTENTS)) Tj
+/F1 9 Tf 0 -16 Td (Full-Stack Modern dengan Go & Next.js: Dari Nol Hingga Deployment VPS  - Eko Kurniawan Khannedy, Sandhika Galih) Tj
+ET
+
+0.1 0.1 0.1 rg
+BT /F2 12 Tf 45 690 Td (STRUKTUR BAB & SUB-BAHASAN MATERI) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 682 m 567 682 l S
+
+% Table of Contents Items
+0.15 0.15 0.15 rg
+BT /F2 10 Tf 45 660 Td (Bagian Awal: Prakata & Pengantar Penerbit) Tj /F1 9 Tf 420 0 Td (v - viii) Tj ET
+BT /F2 10 Tf 45 642 Td (Lembar Hak Cipta & Standar Lisensi Digital) Tj /F1 9 Tf 420 0 Td (ix) Tj ET
+
+BT /F2 9.5 Tf 45 618 Td (Bab 1: Fondasi Arsitektur Web Modern Go & React) Tj /F1 9 Tf 420 0 Td (hlm. 1 - 50) Tj ET
+
+BT /F1 8.5 Tf 60 603 Td (- Struktur Modul Go & Standar Clean) Tj ET
+
+BT /F1 8.5 Tf 60 590 Td (- Next.js App Router Paradigma) Tj ET
+
+BT /F1 8.5 Tf 60 577 Td (- Protokol Komunikasi Data) Tj ET
+
+BT /F2 9.5 Tf 45 559 Td (Bab 2: Pembuatan REST API Performa Tinggi dengan Fiber) Tj /F1 9 Tf 420 0 Td (hlm. 51 - 130) Tj ET
+
+BT /F1 8.5 Tf 60 544 Td (- Routing & Middleware Kustom) Tj ET
+
+BT /F1 8.5 Tf 60 531 Td (- Validasi Request Struct Validator) Tj ET
+
+BT /F1 8.5 Tf 60 518 Td (- Pola Repository & Dependency Injection) Tj ET
+
+BT /F2 9.5 Tf 45 500 Td (Bab 3: Interaksi Database Relasional PostgreSQL & Redis) Tj /F1 9 Tf 420 0 Td (hlm. 131 - 210) Tj ET
+
+BT /F1 8.5 Tf 60 485 Td (- Migrasi Skema Otomatis) Tj ET
+
+BT /F1 8.5 Tf 60 472 Td (- Indexing & Optimasi Query) Tj ET
+
+BT /F1 8.5 Tf 60 459 Td (- In-Memory Caching dengan Redis) Tj ET
+
+BT /F2 9.5 Tf 45 441 Td (Bab 4: Pembangunan Antarmuka Reaktif Next.js 14) Tj /F1 9 Tf 420 0 Td (hlm. 211 - 310) Tj ET
+
+BT /F1 8.5 Tf 60 426 Td (- Server vs Client Components) Tj ET
+
+BT /F1 8.5 Tf 60 413 Td (- Optimistic UI Updates) Tj ET
+
+BT /F1 8.5 Tf 60 400 Td (- Integrasi TailwindCSS & Desain Sistem) Tj ET
+
+BT /F2 9.5 Tf 45 382 Td (Bab 5: Strategi Deployment Produksi VPS & SSL) Tj /F1 9 Tf 420 0 Td (hlm. 311 - 398) Tj ET
+
+BT /F1 8.5 Tf 60 367 Td (- Multi-stage Dockerfile Go & Node) Tj ET
+
+BT /F1 8.5 Tf 60 354 Td (- Nginx Reverse Proxy & Brotli) Tj ET
+
+BT /F1 8.5 Tf 60 341 Td (- Automasi CI/CD & SSL Let's Encrypt) Tj ET
+
+BT /F2 10 Tf 45 323 Td (Glosarium Istilah & Indeks Subjek Teknis) Tj /F1 9 Tf 420 0 Td (hlm. 450) Tj ET
+BT /F2 10 Tf 45 305 Td (Daftar Pustaka & Rujukan Standar Industri) Tj /F1 9 Tf 420 0 Td (hlm. 465) Tj ET
+
+% Info Box Bottom
+0.94 0.96 0.98 rg 45 60 522 65 re f
+0.4 0.55 0.75 RG 1 w 45 60 522 65 re S
+0.1 0.2 0.4 rg
+BT /F2 9.5 Tf 55 105 Td (Petunjuk Pembaca Digital Perpustakaan Galura SLiMS:) Tj
+/F1 8.5 Tf 0 -16 Td (Daftar isi ini menyajikan sistematika pembahasan utuh yang terdapat dalam edisi cetak dan digital.) Tj
+0 -13 Td (Pembaca dapat langsung meloncat ke bab materi tertentu menggunakan fitur navigasi PDF viewer SLiMS.) Tj
+ET
+
+% Page 2 Footer
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Full-Stack Modern dengan Go & Next.js: Dari N | Daftar Isi) Tj
+/F2 8 Tf 440 0 Td (Halaman 2 dari 3) Tj
+ET
+
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 2091 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (CUPLIKAN MATERI BUKU: SAMPLE CHAPTER) Tj
+/F1 9 Tf 0 -16 Td (Full-Stack Modern dengan Go & Next.js: Dari Nol Hingga Deployment VPS  - Eko Kurniawan Khannedy, Sandhika Galih) Tj
+ET
+
+0.1 0.1 0.1 rg
+BT /F2 13 Tf 45 690 Td (Bab 1: Menyatukan Kecepatan Mesin Go dengan Kelincahan Next.js) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 680 m 567 680 l S
+
+0.15 0.15 0.15 rg
+BT /F1 9 Tf 45 660 Td (Dalam membangun sistem bisnis digital yang melayani jutaan transaksi, arsitektur) Tj ET
+BT /F1 9 Tf 45 646 Td (aplikasi tidak boleh berkompromi antara kecepatan respon backend dan keindahan tampilan) Tj ET
+BT /F1 9 Tf 45 632 Td (pengguna. Go menawarkan konsumsi memori yang sangat hemat dan konkurensi goroutine) Tj ET
+BT /F1 9 Tf 45 618 Td (ringan, sementara Next.js menghadirkan Server-Side Rendering tanpa cela untuk pengalaman) Tj ET
+BT /F1 9 Tf 45 604 Td (pengguna kelas satu.) Tj ET
+BT /F1 9 Tf 45 580 Td (Melalui kolaborasi kedua teknologi ini, pengembang memperoleh waktu respon API di bawah) Tj ET
+BT /F1 9 Tf 45 566 Td (15 milidetik dan skor Google Lighthouse di atas 95. Bab ini meletakkan fondasi) Tj ET
+BT /F1 9 Tf 45 552 Td (arsitektural yang akan kita pakai sepanjang proyek pada buku ini.) Tj ET
+
+% Library Service Box
+0.90 0.95 0.92 rg 45 80 522 95 re f
+0.2 0.55 0.35 RG 1.2 w 45 80 522 95 re S
+0.1 0.3 0.2 rg
+BT /F2 10.5 Tf 55 155 Td (LAYANAN PEMINJAMAN E-BOOK RESMI PERPUSTAKAAN GALURA) Tj
+/F1 9 Tf 0 -18 Td (Naskah di atas adalah sampel cuplikan resmi dari repositori Perpustakaan Digital Galura SLiMS.) Tj
+0 -14 Td (Pemustaka terdaftar dapat meminjam atau membaca edisi digital lengkap melalui portal OPAC SLiMS) Tj
+0 -14 Td (atau mengajukan permohonan melalui layanan sirkulasi perpustakaan: https://slims-ebook.galura.id) Tj
+ET
+
+% Page 3 Footer
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Full-Stack Modern dengan Go & Next.js: Dari N | Cuplikan Materi) Tj
+/F2 8 Tf 440 0 Td (Halaman 3 dari 3) Tj
+ET
+
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000134 00000 n 
+0000000204 00000 n 
+0000000279 00000 n 
+0000000357 00000 n 
+0000003681 00000 n 
+0000003827 00000 n 
+0000007024 00000 n 
+0000007170 00000 n 
+0000009314 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R >>
+startxref
+9462
+%%EOF

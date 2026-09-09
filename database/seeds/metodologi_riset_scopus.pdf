@@ -1,0 +1,250 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+6 0 obj
+<< /Length 3361 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+% Header Text
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (PERPUSTAKAAN DIGITAL GALURA - E-BOOK REPOSITORY) Tj
+/F1 9 Tf 0 -16 Td (Koleksi Buku Elektronik Resmi Berstandar RDA | Akses Terbuka Perpustakaan) Tj
+ET
+
+% Title & Subtitle
+0.1 0.1 0.1 rg
+BT /F2 16 Tf 45 695 Td (Metodologi Riset Komputasi & Panduan Publikasi Ilmiah Jurnal) Tj
+ET
+
+BT /F2 15 Tf 45 675 Td ( Terindeks Scopus/WoS) Tj ET
+
+0.2 0.3 0.4 rg
+BT /F3 11 Tf 45 655 Td (Perumusan Kebaruan \(Novelty\, Tinjauan Pustaka Sistematis PRISMA, Validasi Eksperimental, dan Strategi Peer-Review) Tj ET
+
+% Metadata Box Frame
+0.82 0.86 0.92 rg
+45 425 522 210 re f
+0.3 0.45 0.65 RG
+1 w
+45 425 522 210 re S
+
+% Metadata Box Header
+0.15 0.28 0.52 rg
+45 615 522 20 re f
+1 1 1 rg
+BT /F2 10 Tf 55 621 Td (KATALOGISASI DALAM TERBITAN (KDT) / BIBLIOGRAPHIC METADATA) Tj ET
+
+% Metadata Fields
+0.1 0.1 0.1 rg
+BT /F2 9 Tf 55 595 Td (Penulis Utama    :) Tj /F1 9 Tf 90 0 Td (Dr. Ir. Rian Pratama, M.Sc., Prof. Dr. Ir. Suhono H. Supangkat) Tj ET
+BT /F2 9 Tf 55 577 Td (Editor / Redaksi :) Tj /F1 9 Tf 90 0 Td (Dewan Riset Akademik Galura Institute) Tj ET
+BT /F2 9 Tf 55 559 Td (Penerbit & Tahun :) Tj /F1 9 Tf 90 0 Td (Galura Academic Press bekerjasama dengan Penerbit Salemba Humanika (2024)) Tj ET
+BT /F2 9 Tf 55 541 Td (Nomor ISBN / e-ISBN :) Tj /F1 9 Tf 90 0 Td (978-623-01-3898-1) Tj ET
+BT /F2 9 Tf 55 523 Td (Nomor Panggil (Call) :) Tj /F1 9 Tf 90 0 Td (EB 001.42 PRA m  [Klasifikasi DDC: 001.42]) Tj ET
+BT /F2 9 Tf 55 505 Td (Subjek / Kategori:) Tj /F1 9 Tf 90 0 Td (Research Methodology & Academic Writing) Tj ET
+BT /F2 9 Tf 55 487 Td (Seri Publikasi   :) Tj /F1 9 Tf 90 0 Td (Seri Publikasi Ilmiah & Akademik Pascasarjana; Jilid 1) Tj ET
+BT /F2 9 Tf 55 469 Td (Deskripsi Fisik  :) Tj /F1 9 Tf 90 0 Td (1 File PDF (xx, 330 halaman : ilus. ; 25 cm)) Tj ET
+BT /F2 9 Tf 55 451 Td (Aksesibilitas    :) Tj /F2 9 Tf 90 0 Td (Hak Cipta Digital - Akses Terbuka Pemustaka (Public Open Access)) Tj ET
+BT /F2 9 Tf 55 433 Td (Bahasa & Format  :) Tj /F1 9 Tf 90 0 Td (Bahasa Indonesia | Format PDF Digital (High Resolution Text)) Tj ET
+
+% Synopsis Section
+0.08 0.18 0.36 rg
+BT /F2 12 Tf 45 400 Td (RINGKASAN & SINOPSIS EKSEKUTIF BUKU) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 392 m 567 392 l S
+
+% Synopsis Paragraph 1
+0.15 0.15 0.15 rg
+BT /F1 9 Tf 45 376 Td (Publikasi pada jurnal bereputasi tinggi terindeks Scopus kuartil atas \(Q1/Q2\ dan Web) Tj ET
+BT /F1 9 Tf 45 362 Td (of Science menuntut metodologi riset yang ketat, orisinalitas kontribusi ilmiah yang) Tj ET
+BT /F1 9 Tf 45 348 Td (terukur, serta penyajian naskah artikel yang memenuhi standar akademis internasional.) Tj ET
+BT /F1 9 Tf 45 328 Td (Buku ini membimbing akademisi, peneliti, dan mahasiswa pascasarjana merumuskan) Tj ET
+BT /F1 9 Tf 45 314 Td (kontribusi penelitian \(*novelty*\, melaksanakan Systematic Literature Review berpedoman) Tj ET
+BT /F1 9 Tf 45 300 Td (protokol PRISMA, merancang uji coba eksperimen komparatif berbasis benchmark standar,) Tj ET
+BT /F1 9 Tf 45 286 Td (serta menanggapi komentar reviewer secara elegan dan profesional.) Tj ET
+
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Metodologi Riset Komputasi & Panduan Publikas | e-ISBN: 978-623-01-3898-1) Tj
+/F2 8 Tf 440 0 Td (Halaman 1 dari 3) Tj
+ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 3390 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (DAFTAR ISI LENGKAP BUKU (TABLE OF CONTENTS)) Tj
+/F1 9 Tf 0 -16 Td (Metodologi Riset Komputasi & Panduan Publikasi Ilmiah Jurnal Terindeks - Dr. Ir. Rian Pratama, M.Sc., Prof. Dr. Ir. Suhono H. Supangkat) Tj
+ET
+
+0.1 0.1 0.1 rg
+BT /F2 12 Tf 45 690 Td (STRUKTUR BAB & SUB-BAHASAN MATERI) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 682 m 567 682 l S
+
+% Table of Contents Items
+0.15 0.15 0.15 rg
+BT /F2 10 Tf 45 660 Td (Bagian Awal: Prakata & Pengantar Penerbit) Tj /F1 9 Tf 420 0 Td (v - viii) Tj ET
+BT /F2 10 Tf 45 642 Td (Lembar Hak Cipta & Standar Lisensi Digital) Tj /F1 9 Tf 420 0 Td (ix) Tj ET
+
+BT /F2 9.5 Tf 45 618 Td (Bab 1: Fondasi Riset Ilmiah di Bidang Ilmu Komputer) Tj /F1 9 Tf 420 0 Td (hlm. 1 - 40) Tj ET
+
+BT /F1 8.5 Tf 60 603 Td (- Karakteristik Riset Sains Komputasi) Tj ET
+
+BT /F1 8.5 Tf 60 590 Td (- Menemukan Research Gap yang Bernilai) Tj ET
+
+BT /F1 8.5 Tf 60 577 Td (- Formulasi Hipotesis & Research Questions) Tj ET
+
+BT /F2 9.5 Tf 45 559 Td (Bab 2: Systematic Literature Review Menggunakan Protokol PRISMA) Tj /F1 9 Tf 420 0 Td (hlm. 41 - 102) Tj ET
+
+BT /F1 8.5 Tf 60 544 Td (- Strategi Query Database IEEE, ACM, ScienceDirect) Tj ET
+
+BT /F1 8.5 Tf 60 531 Td (- Kriteria Inklusi dan Eksklusi Transparan) Tj ET
+
+BT /F1 8.5 Tf 60 518 Td (- Sintesis Bukti & Bibliometric VOSviewer) Tj ET
+
+BT /F2 9.5 Tf 45 500 Td (Bab 3: Perancangan Eksperimen Empiris & Validasi Benchmark) Tj /F1 9 Tf 420 0 Td (hlm. 103 - 180) Tj ET
+
+BT /F1 8.5 Tf 60 485 Td (- Dataset Standar & Metrik Evaluasi Komparatif) Tj ET
+
+BT /F1 8.5 Tf 60 472 Td (- Uji Signifikansi Statistik \(t-test, ANOVA\) Tj ET
+
+BT /F1 8.5 Tf 60 459 Td (- Reproducibility & Open Source Artifacts) Tj ET
+
+BT /F2 9.5 Tf 45 441 Td (Bab 4: Struktur Penulisan Naskah IMRAD Standar Q1) Tj /F1 9 Tf 420 0 Td (hlm. 181 - 256) Tj ET
+
+BT /F1 8.5 Tf 60 426 Td (- Menulis Judul & Abstrak yang Mengikat) Tj ET
+
+BT /F1 8.5 Tf 60 413 Td (- Menyajikan Hasil Melalui Grafik Vektor Presisi) Tj ET
+
+BT /F1 8.5 Tf 60 400 Td (- Diskusi Kritis Melawan Keterbatasan Penelitian) Tj ET
+
+BT /F2 9.5 Tf 45 382 Td (Bab 5: Navigasi Proses Peer-Review & Menjawab Komentar Reviewer) Tj /F1 9 Tf 420 0 Td (hlm. 257 - 318) Tj ET
+
+BT /F1 8.5 Tf 60 367 Td (- Memilih Jurnal yang Tepat Tanpa Predator) Tj ET
+
+BT /F1 8.5 Tf 60 354 Td (- Menyusun Response Letter Poin demi Poin) Tj ET
+
+BT /F1 8.5 Tf 60 341 Td (- Etika Kepengarangan & Penanganan Konflik Kepentingan) Tj ET
+
+BT /F2 10 Tf 45 323 Td (Glosarium Istilah & Indeks Subjek Teknis) Tj /F1 9 Tf 420 0 Td (hlm. 450) Tj ET
+BT /F2 10 Tf 45 305 Td (Daftar Pustaka & Rujukan Standar Industri) Tj /F1 9 Tf 420 0 Td (hlm. 465) Tj ET
+
+% Info Box Bottom
+0.94 0.96 0.98 rg 45 60 522 65 re f
+0.4 0.55 0.75 RG 1 w 45 60 522 65 re S
+0.1 0.2 0.4 rg
+BT /F2 9.5 Tf 55 105 Td (Petunjuk Pembaca Digital Perpustakaan Galura SLiMS:) Tj
+/F1 8.5 Tf 0 -16 Td (Daftar isi ini menyajikan sistematika pembahasan utuh yang terdapat dalam edisi cetak dan digital.) Tj
+0 -13 Td (Pembaca dapat langsung meloncat ke bab materi tertentu menggunakan fitur navigasi PDF viewer SLiMS.) Tj
+ET
+
+% Page 2 Footer
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Metodologi Riset Komputasi & Panduan Publikas | Daftar Isi) Tj
+/F2 8 Tf 440 0 Td (Halaman 2 dari 3) Tj
+ET
+
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 2158 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (CUPLIKAN MATERI BUKU: SAMPLE CHAPTER) Tj
+/F1 9 Tf 0 -16 Td (Metodologi Riset Komputasi & Panduan Publikasi Ilmiah Jurnal Terindeks - Dr. Ir. Rian Pratama, M.Sc., Prof. Dr. Ir. Suhono H. Supangkat) Tj
+ET
+
+0.1 0.1 0.1 rg
+BT /F2 13 Tf 45 690 Td (Bab 1: Menemukan Kebaruan Ilmiah: Membedakan 'Proyek Coding' dari 'Riset Ilmiah') Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 680 m 567 680 l S
+
+0.15 0.15 0.15 rg
+BT /F1 9 Tf 45 660 Td (Salah satu batu sandungan terbesar bagi peneliti pemula di bidang ilmu komputer adalah) Tj ET
+BT /F1 9 Tf 45 646 Td (ketidakmampuan membedakan antara kegiatan rekayasa perangkat lunak biasa \(software) Tj ET
+BT /F1 9 Tf 45 632 Td (development\ dengan penelitian ilmiah murni \(scientific research\. Membangun sebuah) Tj ET
+BT /F1 9 Tf 45 618 Td (aplikasi web atau mobile dengan teknologi terbaru bukanlah riset ilmiah jika tidak ada) Tj ET
+BT /F1 9 Tf 45 604 Td (pertanyaan mendasar yang dijawab.) Tj ET
+BT /F1 9 Tf 45 580 Td (Sebuah kontribusi ilmiah mensyaratkan adanya pemahaman baru yang digali, algoritma baru) Tj ET
+BT /F1 9 Tf 45 566 Td (yang terbukti secara empiris lebih unggul daripada metode *state-of-the-art*, atau) Tj ET
+BT /F1 9 Tf 45 552 Td (formulasi teoretis yang memperluas batas pengetahuan peradaban manusia.) Tj ET
+
+% Library Service Box
+0.90 0.95 0.92 rg 45 80 522 95 re f
+0.2 0.55 0.35 RG 1.2 w 45 80 522 95 re S
+0.1 0.3 0.2 rg
+BT /F2 10.5 Tf 55 155 Td (LAYANAN PEMINJAMAN E-BOOK RESMI PERPUSTAKAAN GALURA) Tj
+/F1 9 Tf 0 -18 Td (Naskah di atas adalah sampel cuplikan resmi dari repositori Perpustakaan Digital Galura SLiMS.) Tj
+0 -14 Td (Pemustaka terdaftar dapat meminjam atau membaca edisi digital lengkap melalui portal OPAC SLiMS) Tj
+0 -14 Td (atau mengajukan permohonan melalui layanan sirkulasi perpustakaan: https://slims-ebook.galura.id) Tj
+ET
+
+% Page 3 Footer
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Metodologi Riset Komputasi & Panduan Publikas | Cuplikan Materi) Tj
+/F2 8 Tf 440 0 Td (Halaman 3 dari 3) Tj
+ET
+
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000134 00000 n 
+0000000204 00000 n 
+0000000279 00000 n 
+0000000357 00000 n 
+0000003770 00000 n 
+0000003916 00000 n 
+0000007358 00000 n 
+0000007504 00000 n 
+0000009715 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R >>
+startxref
+9863
+%%EOF

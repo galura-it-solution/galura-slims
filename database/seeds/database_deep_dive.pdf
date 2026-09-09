@@ -1,0 +1,250 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+6 0 obj
+<< /Length 3295 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+% Header Text
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (PERPUSTAKAAN DIGITAL GALURA - E-BOOK REPOSITORY) Tj
+/F1 9 Tf 0 -16 Td (Koleksi Buku Elektronik Resmi Berstandar RDA | Akses Terbuka Perpustakaan) Tj
+ET
+
+% Title & Subtitle
+0.1 0.1 0.1 rg
+BT /F2 16 Tf 45 695 Td (Database Deep Dive: Optimasi Query SQL, Desain Indeks B-Tree) Tj
+ET
+
+BT /F2 15 Tf 45 675 Td ( & Arsitektur Sharding) Tj ET
+
+0.2 0.3 0.4 rg
+BT /F3 11 Tf 45 655 Td (Bedah Mesin Penyimpanan InnoDB, Analisis Execution Plan EXPLAIN, Mitigasi Deadlock, dan Replikasi Multi-Master) Tj ET
+
+% Metadata Box Frame
+0.82 0.86 0.92 rg
+45 425 522 210 re f
+0.3 0.45 0.65 RG
+1 w
+45 425 522 210 re S
+
+% Metadata Box Header
+0.15 0.28 0.52 rg
+45 615 522 20 re f
+1 1 1 rg
+BT /F2 10 Tf 55 621 Td (KATALOGISASI DALAM TERBITAN (KDT) / BIBLIOGRAPHIC METADATA) Tj ET
+
+% Metadata Fields
+0.1 0.1 0.1 rg
+BT /F2 9 Tf 55 595 Td (Penulis Utama    :) Tj /F1 9 Tf 90 0 Td (Alex Xu, Baron Schwartz) Tj ET
+BT /F2 9 Tf 55 577 Td (Editor / Redaksi :) Tj /F1 9 Tf 90 0 Td (Tim Database Administrator Galura Core) Tj ET
+BT /F2 9 Tf 55 559 Td (Penerbit & Tahun :) Tj /F1 9 Tf 90 0 Td (O Reilly Media bekerjasama dengan Galura Press (2023)) Tj ET
+BT /F2 9 Tf 55 541 Td (Nomor ISBN / e-ISBN :) Tj /F1 9 Tf 90 0 Td (978-1-492-08051-0) Tj ET
+BT /F2 9 Tf 55 523 Td (Nomor Panggil (Call) :) Tj /F1 9 Tf 90 0 Td (EB 005.74 XU d  [Klasifikasi DDC: 005.74]) Tj ET
+BT /F2 9 Tf 55 505 Td (Subjek / Kategori:) Tj /F1 9 Tf 90 0 Td (Database Internals & Caching) Tj ET
+BT /F2 9 Tf 55 487 Td (Seri Publikasi   :) Tj /F1 9 Tf 90 0 Td (Seri Teknologi Database Skala Besar; Jilid 2) Tj ET
+BT /F2 9 Tf 55 469 Td (Deskripsi Fisik  :) Tj /F1 9 Tf 90 0 Td (1 File PDF (xxviii, 490 halaman : ilus. ; 25 cm)) Tj ET
+BT /F2 9 Tf 55 451 Td (Aksesibilitas    :) Tj /F2 9 Tf 90 0 Td (Hak Cipta Digital - Akses Terbuka Pemustaka (Public Open Access)) Tj ET
+BT /F2 9 Tf 55 433 Td (Bahasa & Format  :) Tj /F1 9 Tf 90 0 Td (Bahasa Indonesia | Format PDF Digital (High Resolution Text)) Tj ET
+
+% Synopsis Section
+0.08 0.18 0.36 rg
+BT /F2 12 Tf 45 400 Td (RINGKASAN & SINOPSIS EKSEKUTIF BUKU) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 392 m 567 392 l S
+
+% Synopsis Paragraph 1
+0.15 0.15 0.15 rg
+BT /F1 9 Tf 45 376 Td (Di balik setiap aplikasi berskala masif, terdapat basis data relasional yang harus) Tj ET
+BT /F1 9 Tf 45 362 Td (mampu melayani puluhan ribu transaksi konkuren tanpa degradasi performa atau korupsi) Tj ET
+BT /F1 9 Tf 45 348 Td (data. Buku ini membongkar rahasia internal mesin database relasional \(khususnya MySQL) Tj ET
+BT /F1 9 Tf 45 334 Td (dan MariaDB\.) Tj ET
+BT /F1 9 Tf 45 314 Td (Menjelaskan cara kerja engine InnoDB, struktur halaman indeks B+ Tree dan Clustered) Tj ET
+BT /F1 9 Tf 45 300 Td (Index, optimasi query lambat menggunakan EXPLAIN ANALYZE, isolasi transaksi ACID,) Tj ET
+BT /F1 9 Tf 45 286 Td (strategi penanganan deadlock dan lock escalation, serta teknik partisi horizontal) Tj ET
+BT /F1 9 Tf 45 272 Td (\(sharding\ dan replikasi data multi-region.) Tj ET
+
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Database Deep Dive: Optimasi Query SQL, Desai | e-ISBN: 978-1-492-08051-0) Tj
+/F2 8 Tf 440 0 Td (Halaman 1 dari 3) Tj
+ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 3288 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (DAFTAR ISI LENGKAP BUKU (TABLE OF CONTENTS)) Tj
+/F1 9 Tf 0 -16 Td (Database Deep Dive: Optimasi Query SQL, Desain Indeks B-Tree & Arsitek - Alex Xu, Baron Schwartz) Tj
+ET
+
+0.1 0.1 0.1 rg
+BT /F2 12 Tf 45 690 Td (STRUKTUR BAB & SUB-BAHASAN MATERI) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 682 m 567 682 l S
+
+% Table of Contents Items
+0.15 0.15 0.15 rg
+BT /F2 10 Tf 45 660 Td (Bagian Awal: Prakata & Pengantar Penerbit) Tj /F1 9 Tf 420 0 Td (v - viii) Tj ET
+BT /F2 10 Tf 45 642 Td (Lembar Hak Cipta & Standar Lisensi Digital) Tj /F1 9 Tf 420 0 Td (ix) Tj ET
+
+BT /F2 9.5 Tf 45 618 Td (Bab 1: Anatomi Mesin Penyimpanan InnoDB & Buffer Pool) Tj /F1 9 Tf 420 0 Td (hlm. 1 - 54) Tj ET
+
+BT /F1 8.5 Tf 60 603 Td (- Arsitektur Memori & Struktur Halaman 16KB) Tj ET
+
+BT /F1 8.5 Tf 60 590 Td (- Write-Ahead Logging \(WAL\ & Redo/Undo Log) Tj ET
+
+BT /F1 8.5 Tf 60 577 Td (- Algoritma Pembersihan Dirty Pages LRU) Tj ET
+
+BT /F2 9.5 Tf 45 559 Td (Bab 2: Seni Merancang Indeks Efisien \(B+ Tree Deep Dive\) Tj /F1 9 Tf 420 0 Td (hlm. 55 - 146) Tj ET
+
+BT /F1 8.5 Tf 60 544 Td (- Clustered vs Secondary Index) Tj ET
+
+BT /F1 8.5 Tf 60 531 Td (- Composite Index & Aturan Leftmost Prefix) Tj ET
+
+BT /F1 8.5 Tf 60 518 Td (- Covering Index & Eliminasi Index Lookup) Tj ET
+
+BT /F2 9.5 Tf 45 500 Td (Bab 3: Membaca & Menindaklanjuti EXPLAIN ANALYZE) Tj /F1 9 Tf 420 0 Td (hlm. 147 - 236) Tj ET
+
+BT /F1 8.5 Tf 60 485 Td (- Tipe Join \(Nested Loop, Hash Join, Merge\) Tj ET
+
+BT /F1 8.5 Tf 60 472 Td (- Identifikasi Full Table Scan Berbahaya) Tj ET
+
+BT /F1 8.5 Tf 60 459 Td (- Cost-Based Optimizer \(CBO\ Behavior) Tj ET
+
+BT /F2 9.5 Tf 45 441 Td (Bab 4: Konkurensi Transaksi, Tingkat Isolasi & Kunci Baris) Tj /F1 9 Tf 420 0 Td (hlm. 237 - 338) Tj ET
+
+BT /F1 8.5 Tf 60 426 Td (- Multi-Version Concurrency Control \(MVCC\) Tj ET
+
+BT /F1 8.5 Tf 60 413 Td (- Shared Lock vs Exclusive Lock) Tj ET
+
+BT /F1 8.5 Tf 60 400 Td (- Analisis Log Deadlock & Mitigasi Aplikasi) Tj ET
+
+BT /F2 9.5 Tf 45 382 Td (Bab 5: Skalabilitas Horisontal, Replikasi & Sharding) Tj /F1 9 Tf 420 0 Td (hlm. 339 - 470) Tj ET
+
+BT /F1 8.5 Tf 60 367 Td (- Replikasi Asinkron vs Semi-Sinkron) Tj ET
+
+BT /F1 8.5 Tf 60 354 Td (- Sharding Key Selection & Distributed Queries) Tj ET
+
+BT /F1 8.5 Tf 60 341 Td (- Migrasi Skema Online Tanpa Downtime \(gh-ost\) Tj ET
+
+BT /F2 10 Tf 45 323 Td (Glosarium Istilah & Indeks Subjek Teknis) Tj /F1 9 Tf 420 0 Td (hlm. 450) Tj ET
+BT /F2 10 Tf 45 305 Td (Daftar Pustaka & Rujukan Standar Industri) Tj /F1 9 Tf 420 0 Td (hlm. 465) Tj ET
+
+% Info Box Bottom
+0.94 0.96 0.98 rg 45 60 522 65 re f
+0.4 0.55 0.75 RG 1 w 45 60 522 65 re S
+0.1 0.2 0.4 rg
+BT /F2 9.5 Tf 55 105 Td (Petunjuk Pembaca Digital Perpustakaan Galura SLiMS:) Tj
+/F1 8.5 Tf 0 -16 Td (Daftar isi ini menyajikan sistematika pembahasan utuh yang terdapat dalam edisi cetak dan digital.) Tj
+0 -13 Td (Pembaca dapat langsung meloncat ke bab materi tertentu menggunakan fitur navigasi PDF viewer SLiMS.) Tj
+ET
+
+% Page 2 Footer
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Database Deep Dive: Optimasi Query SQL, Desai | Daftar Isi) Tj
+/F2 8 Tf 440 0 Td (Halaman 2 dari 3) Tj
+ET
+
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 2001 >>
+stream
+
+% Header Background Band
+0.08 0.18 0.36 rg
+0 730 612 62 re f
+
+1 1 1 rg
+BT /F2 14 Tf 45 765 Td (CUPLIKAN MATERI BUKU: SAMPLE CHAPTER) Tj
+/F1 9 Tf 0 -16 Td (Database Deep Dive: Optimasi Query SQL, Desain Indeks B-Tree & Arsitek - Alex Xu, Baron Schwartz) Tj
+ET
+
+0.1 0.1 0.1 rg
+BT /F2 13 Tf 45 690 Td (Bab 1: Menembus Batas I/O: Mengapa Basis Data Melambat?) Tj ET
+0.7 0.7 0.7 RG 0.8 w 45 680 m 567 680 l S
+
+0.15 0.15 0.15 rg
+BT /F1 9 Tf 45 660 Td (Ketika sebuah aplikasi mulai mengalami perlambatan akut, reaksi pertama yang sering) Tj ET
+BT /F1 9 Tf 45 646 Td (diambil adalah menambahkan memori RAM atau menambah core CPU pada server. Namun dalam) Tj ET
+BT /F1 9 Tf 45 632 Td (mayoritas kasus nyata, akar masalahnya bukan kekurangan perangkat keras, melainkan query) Tj ET
+BT /F1 9 Tf 45 618 Td (SQL yang tidak efisien yang memicu jutaan pembacaan I/O disk acak.) Tj ET
+BT /F1 9 Tf 45 594 Td (Memahami bagaimana InnoDB menata data dalam struktur pohon B+ Tree dan bagaimana Buffer) Tj ET
+BT /F1 9 Tf 45 580 Td (Pool mengelola cache halaman adalah kunci emas bagi arsitek perangkat lunak untuk) Tj ET
+BT /F1 9 Tf 45 566 Td (menekan latensi kueri dari hitungan detik menjadi milidetik.) Tj ET
+
+% Library Service Box
+0.90 0.95 0.92 rg 45 80 522 95 re f
+0.2 0.55 0.35 RG 1.2 w 45 80 522 95 re S
+0.1 0.3 0.2 rg
+BT /F2 10.5 Tf 55 155 Td (LAYANAN PEMINJAMAN E-BOOK RESMI PERPUSTAKAAN GALURA) Tj
+/F1 9 Tf 0 -18 Td (Naskah di atas adalah sampel cuplikan resmi dari repositori Perpustakaan Digital Galura SLiMS.) Tj
+0 -14 Td (Pemustaka terdaftar dapat meminjam atau membaca edisi digital lengkap melalui portal OPAC SLiMS) Tj
+0 -14 Td (atau mengajukan permohonan melalui layanan sirkulasi perpustakaan: https://slims-ebook.galura.id) Tj
+ET
+
+% Page 3 Footer
+0.92 0.94 0.97 rg 0 0 612 40 re f
+0.6 0.6 0.6 RG 0.5 w 0 40 m 612 40 l S
+0.3 0.3 0.3 rg
+BT /F1 8 Tf 45 18 Td (SLiMS Galura E-Book Repository | Database Deep Dive: Optimasi Query SQL, Desai | Cuplikan Materi) Tj
+/F2 8 Tf 440 0 Td (Halaman 3 dari 3) Tj
+ET
+
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000134 00000 n 
+0000000204 00000 n 
+0000000279 00000 n 
+0000000357 00000 n 
+0000003704 00000 n 
+0000003850 00000 n 
+0000007190 00000 n 
+0000007336 00000 n 
+0000009390 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R >>
+startxref
+9538
+%%EOF
