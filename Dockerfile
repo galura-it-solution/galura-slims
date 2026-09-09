@@ -9,7 +9,7 @@ RUN apt-get update \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-enable gd
 
-RUN a2enmod rewrite
+RUN a2enmod rewrite && echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 

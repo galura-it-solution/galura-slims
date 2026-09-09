@@ -186,7 +186,7 @@ class Native extends Contract
         if (config('loadbalanced.env', false)) {
             $server_addr = ip()->getProxyIp();
         } else {
-            $server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : (isset($_SERVER['LOCAL_ADDR']) ? $_SERVER['LOCAL_ADDR'] : gethostbyname($_SERVER['SERVER_NAME']));
+            $server_addr = $_SERVER['SERVER_ADDR'] ?? $_SERVER['LOCAL_ADDR'] ?? gethostbyname($_SERVER['SERVER_NAME'] ?? $_SERVER['HTTP_HOST'] ?? 'localhost');
         }
         $this->data['checksum'] = defined('UCS_BASE_DIR') ? md5($server_addr . UCS_BASE_DIR . 'admin') : md5($server_addr . SB . 'admin');
 

@@ -34,6 +34,9 @@ class ReCaptcha extends Contract
     public function validate()
     {
         $url = $this->factory->getProviderConfig('varify_url');
+        if (empty($url)) {
+            return true;
+        }
 
         $data = array(
             'secret' => $this->factory->getProviderConfig('privatekey'),
@@ -51,15 +54,18 @@ class ReCaptcha extends Contract
         try {
             $context  = stream_context_create($options);
             $verify = @file_get_contents($url, false, $context);
+            if ($verify === false) {
+                return false;
+            }
             $captcha = json_decode($verify);
 
-            if ($captcha->success === false) {
+            if ($captcha && isset($captcha->success) && $captcha->success === false) {
                 $keyError = "error-codes";
-                throw new Exception(implode(', ', $captcha->$keyError));
+                throw new Exception(implode(', ', $captcha->$keyError ?? []));
             }
                 
-            return $captcha->success;
-        } catch (Exception $e) {
+            return $captcha->success ?? false;
+        } catch (\Throwable $e) {
             $this->error = 'Captcha Error : ' . $e->getMessage();
             return false;
         }

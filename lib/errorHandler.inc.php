@@ -46,6 +46,11 @@ if (!function_exists('slimsErrorHandler'))
 {
     function slimsErrorHandler($severity, $message, $filepath, $line)
     {
+        // Respect error suppression operator (@) in PHP 8+
+        if (!(error_reporting() & $severity)) {
+            return false;
+        }
+
         $is_error = (((E_ERROR | E_PARSE | E_COMPILE_ERROR | E_CORE_ERROR | E_USER_ERROR | E_WARNING) & $severity) === $severity);
 
         if ($is_error) {

@@ -52,6 +52,27 @@ for sample in /var/www/html/config/*.sample.php; do
     fi
 done
 
+# Ensure valid captcha configuration (disabled by default)
+cat <<EOF >/var/www/html/config/captcha.php
+<?php
+return [
+    'default' => 'ReCaptcha',
+    'sections' => [
+        'librarian' => ['active' => false],
+        'memberarea' => ['active' => false],
+        'forgot' => ['active' => false],
+    ],
+    'providers' => [
+        'ReCaptcha' => [
+            'varify_url' => 'https://www.google.com/recaptcha/api/siteverify',
+            'publickey' => '',
+            'privatekey' => '',
+            'class' => \SLiMS\Captcha\Providers\ReCaptcha::class
+        ]
+    ]
+];
+EOF
+
 # Ensure directory permissions for config and mounted volumes
 chown -R www-data:www-data /var/www/html/config /var/www/html/files /var/www/html/images /var/www/html/repository 2>/dev/null || true
 chmod -R 775 /var/www/html/config /var/www/html/files /var/www/html/images /var/www/html/repository 2>/dev/null || true
