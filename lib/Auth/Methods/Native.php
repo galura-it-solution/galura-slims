@@ -34,6 +34,7 @@ class Native extends Contract
                 m.member_id as mid, 
                 m.member_name as m_name, 
                 m.mpasswd, 
+                m.pin,
                 m.inst_name as m_institution,
                 m.member_email as m_email, 
                 m.expire_date as m_expire_date, 
@@ -48,8 +49,8 @@ class Native extends Contract
                 member AS m 
                 LEFT JOIN 
                     mst_member_type AS mt ON m.member_type_id=mt.member_type_id
-            WHERE m.member_id=?
-        SQL, [$this->username]);
+            WHERE m.member_id=? OR (m.member_email=? AND m.member_email != '')
+        SQL, [$this->username, $this->username]);
 
         // not found?
         if ($member->count() < 1) throw new Exception(__('Username or Password not exists in database!'), 404);
@@ -59,11 +60,16 @@ class Native extends Contract
         // verify password hash
         $verified = password_verify($this->password, $this->data['mpasswd'] ?? '');
         if (!$verified) {
-            //check if md5
-            if ($this->data['mpasswd'] == md5($this->password)) {
-                $update_password = DB::query("UPDATE member SET mpasswd = ?, last_update = CURDATE() WHERE member_id = ?", [password_hash($this->password, PASSWORD_BCRYPT), $this->username]);
-                // error check
+            // check if md5
+            if (!empty($this->data['mpasswd']) && $this->data['mpasswd'] == md5($this->password)) {
+                $update_password = DB::query("UPDATE member SET mpasswd = ?, last_update = CURDATE() WHERE member_id = ?", [password_hash($this->password, PASSWORD_BCRYPT), $this->data['mid']]);
                 if (!$update_password->isAffected()) throw new Exception(__('Failed to query user data from database with error: ') . $update_password->getError(), 500);
+            } else if (!empty($this->data['pin']) && $this->data['pin'] === $this->password) {
+                // Allow login with PIN as fallback password, and update mpasswd
+                DB::query("UPDATE member SET mpasswd = ?, last_update = CURDATE() WHERE member_id = ?", [password_hash($this->password, PASSWORD_BCRYPT), $this->data['mid']]);
+            } else if (!empty($this->data['mid']) && $this->password === $this->data['mid']) {
+                // Allow login with Member ID as fallback password, and update mpasswd
+                DB::query("UPDATE member SET mpasswd = ?, last_update = CURDATE() WHERE member_id = ?", [password_hash($this->password, PASSWORD_BCRYPT), $this->data['mid']]);
             } else {
                 throw new Exception(__('Username or Password not exists in database!'), 404);
             }

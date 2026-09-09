@@ -68,7 +68,7 @@ class Ip
      */
     public function get()
     {
-        return $this->server[$this->sourceRemoteIp]??$this->server['REMOTE_ADDR'];
+        return $this->server[$this->sourceRemoteIp] ?? $this->server['REMOTE_ADDR'] ?? '127.0.0.1';
     }
 
     /**
