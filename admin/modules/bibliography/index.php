@@ -1128,11 +1128,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'history') {
     $promote_options[] = array('1', __('Promote'));
     $form->addRadio('promote', __('Promote To Homepage'), $promote_options, isset($rec_d['promoted']) && $rec_d['promoted'] ? '1' : '0');
     // biblio labels
-    $arr_labels = !empty($rec_d['labels']) ? unserialize($rec_d['labels']) : array();
-    if ($arr_labels) {
+    $arr_labels = !empty($rec_d['labels']) ? @unserialize($rec_d['labels']) : array();
+    if (is_array($arr_labels)) {
         foreach ($arr_labels as $label) {
-            $arr_labels[$label[0]] = $label[1];
+            if (is_array($label) && isset($label[0])) {
+                $arr_labels[$label[0]] = $label[1] ?? '';
+            }
         }
+    } else {
+        $arr_labels = array();
     }
     $str_input = '';
     // get label data from database

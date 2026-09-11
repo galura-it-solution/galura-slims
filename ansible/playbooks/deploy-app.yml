@@ -7,7 +7,7 @@
   vars:
     dotenv_values: "{{ hostvars[inventory_hostname].deploy_env | default({}) }}"
     deploy_zone: "{{ lookup('env', 'DEPLOY_ZONE') | default('all', true) }}"
-    docker_network: "{{ lookup('env', 'DEPLOY_DOCKER_NETWORK') | default(dotenv_values.DEPLOY_DOCKER_NETWORK | default('galura_slims_net'), true) }}"
+    docker_network: "{{ lookup('env', 'DEPLOY_DOCKER_NETWORK') | default(dotenv_values.DEPLOY_DOCKER_NETWORK | default('galura_app'), true) }}"
     db_user: "{{ lookup('env', 'DB_USER') | default(dotenv_values.DB_USER | default('root'), true) }}"
     default_db_pass: "{{ lookup('env', 'DB_PASS') | default(dotenv_values.DB_PASS | default('root_password'), true) }}"
 

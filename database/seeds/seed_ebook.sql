@@ -89,7 +89,7 @@ INSERT INTO `biblio` (
   'Seri Arsitektur Cloud & Rekayasa Perangkat Lunak Modern; Jilid 1',
   'EB 004.678 FOW a', 'id', 'pembelian', 203, '004.678',
   'Buku ini menyajikan rujukan paling komprehensif bagi arsitek perangkat lunak dan insinyur senior yang hendak merancang, memigrasikan, dan mengoperasikan ekosistem microservices pada skala produksi tinggi. Dimulai dari identifikasi batas-batas kontekstual (bounded contexts) Domain-Driven Design hingga implementasi pola Saga untuk transaksi terdistribusi. Dilengkapi studi kasus nyata implementasi orkestrasi container menggunakan Kubernetes, streaming data asinkron Apache Kafka, service mesh Istio, API gateway Envoy, serta metrik observabilitas terintegrasi OpenTelemetry, Prometheus, dan Grafana.',
-  NULL, 'microservices_cloud_native.pdf', 0, 1, 'Koleksi Digital Unggulan', 0,
+  NULL, 'microservices_cloud_native.pdf', 0, 1, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -103,7 +103,7 @@ INSERT INTO `biblio` (
   'Seri Kecerdasan Artifisial Tingkat Lanjut; Jilid 2',
   'EB 006.31 PRA r', 'id', 'pembelian', 203, '006.31',
   'Karya ini mengupas tuntas paradigma rekayasa prompt dan integrasi sistem model bahasa besar (LLM) untuk kebutuhan industri modern. Membahas formulasi prompt deterministik, teknik pemikiran berantai (Chain-of-Thought), penalaran ReAct, dan mitigasi halusinasi model pada domain sensitif seperti hukum, medis, dan perbankan. Fokus mendalam diberikan pada arsitektur Retrieval-Augmented Generation (RAG) hibrida yang memadukan pencarian semantik vektor dengan BM25 lexikal, re-ranking Cross-Encoder, serta implementasi agen cerdas yang mampu mengeksekusi alat komputasi eksternal secara terverifikasi.',
-  NULL, 'prompt_engineering_llm.pdf', 0, 1, 'Koleksi Digital Unggulan', 0,
+  NULL, 'prompt_engineering_llm.pdf', 0, 1, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -117,7 +117,7 @@ INSERT INTO `biblio` (
   'Seri Standar Arsitektur Sistem Global; Jilid 2',
   'EB 004.22 XU s', 'id', 'pembelian', 201, '004.22',
   'Buku rujukan global yang telah membantu ribuan insinyur dan arsitek sistem melewati wawancara teknis tingkat staf dan prinsipal di perusahaan teknologi terkemuka dunia. Menjelaskan langkah demi langkah kerangka kerja 4 tahap dalam menyelesaikan masalah desain sistem yang ambigu. Menganalisis arsitektur sistem nyata dari dasar: kalkulasi kapasitas komputasi dan bandwidth, strategi partisi basis data (sharding), konsistensi cache Redis, penyeimbang beban global (Anycast DNS & CDN), serta mitigasi single-point-of-failure pada klaster multi-region.',
-  NULL, 'system_design_interview.pdf', 0, 1, 'E-Book Rekomendasi', 0,
+  NULL, 'system_design_interview.pdf', 0, 1, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -131,7 +131,7 @@ INSERT INTO `biblio` (
   'Seri Pengembang Web Indonesia Modern; Jilid 1',
   'EB 005.133 KHA f', 'id', 'pembelian', 204, '005.133',
   'Kombinasi antara efisiensi kompilasi native bahasa Go dan kekayaan interaksi antarmuka Next.js telah menjadi standar emas baru dalam rekayasa aplikasi web modern yang menuntut performa puncak dan SEO optimal. Membahas pembuatan backend API Go dengan framework Fiber, manajemen koneksi database PostgreSQL via ORM GORM, otentikasi JWT aman berbasis HTTP-Only Cookie, manajemen state TanStack Query pada Next.js Server Components, hingga otomatisasi deployment menggunakan Docker dan Nginx Reverse Proxy.',
-  NULL, 'fullstack_go_nextjs.pdf', 0, 1, 'E-Book Rekomendasi', 0,
+  NULL, 'fullstack_go_nextjs.pdf', 0, 1, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -145,7 +145,7 @@ INSERT INTO `biblio` (
   'Seri Praktik Rekayasa Perangkat Lunak Profesional; Jilid 3',
   'EB 005.1 MAR c', 'id', 'pembelian', 205, '005.1',
   'Karya legendaris Uncle Bob yang menjabarkan aturan universal struktur perangkat lunak yang tahan terhadap perubahan zaman. Memaparkan bagaimana memisahkan logika bisnis murni dari kerangka kerja (framework), basis data, antarmuka pengguna, dan pustaka eksternal lainnya. Menganalisis prinsip SOLID secara mendalam, Dependency Inversion Principle, Boundary Objects, Entity Boundaries, serta strategi penulisan tes unit cepat yang berjalan murni dalam memori tanpa memerlukan koneksi ke database atau layanan eksternal.',
-  NULL, 'clean_architecture.pdf', 0, 0, 'Koleksi Fundamental', 0,
+  NULL, 'clean_architecture.pdf', 0, 0, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -159,7 +159,7 @@ INSERT INTO `biblio` (
   'Seri Pertahanan Siber Nasional; Jilid 1',
   'EB 005.8 PRA c', 'id', 'pembelian', 203, '005.8',
   'Di era digital yang serba terhubung, keamanan informasi bukan lagi opsi tambahan melainkan fondasi kelangsungan bisnis. Buku ini mengupas metodologi serangan siber modern dan langkah preventif berstandar industri perbankan dan militer. Menyajikan panduan praktis hardening server Linux Ubuntu, mitigasi serangan DDoS lapis 4 dan 7, konfigurasi firewall UFW dan deteksi intrusi Fail2ban, analisis log forensik auditd/ELK, pencegahan SQL Injection, XSS, SSRF, serta penerapan prinsip Zero Trust Network Access.',
-  NULL, 'cybersecurity_essentials.pdf', 0, 1, 'Koleksi Digital Unggulan', 0,
+  NULL, 'cybersecurity_essentials.pdf', 0, 1, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -173,7 +173,7 @@ INSERT INTO `biblio` (
   'Seri Otomasi Infrastruktur Awan; Jilid 2',
   'EB 005.12 BUR d', 'id', 'pembelian', 202, '005.12',
   'DevOps dan GitOps telah mengubah total cara tim perekayasa perangkat lunak mengalirkan inovasi dari repositori kode menuju lingkungan produksi secara instan, konsisten, dan aman tanpa intervensi manual yang rentan kesalahan manusia. Buku ini memandu pembaca membangun pipeline CI/CD tangguh menggunakan GitHub Actions, melakukan provisioning server otomatis dengan Ansible Playbook idempotent, mengelola konfigurasi deklaratif GitOps via ArgoCD, serta merancang strategi rilis Blue-Green dan Canary Deployment pada Kubernetes.',
-  NULL, 'devops_gitops_mastery.pdf', 0, 1, 'E-Book Rekomendasi', 0,
+  NULL, 'devops_gitops_mastery.pdf', 0, 1, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -187,7 +187,7 @@ INSERT INTO `biblio` (
   'Seri Sains Data & Kecerdasan Mesin; Jilid 1',
   'EB 006.3 NG d', 'id', 'pembelian', 201, '006.3',
   'Sains data telah menjadi motor penggerak utama dalam pengambilan keputusan bisnis modern. Buku ini menyajikan panduan praktis dan matematis yang seimbang dalam menerapkan algoritma machine learning menggunakan ekosistem bahasa Python. Menjelaskan eksplorasi data komprehensif menggunakan Pandas dan NumPy, visualisasi interaktif Seaborn, prapemrosesan data kotor, rekayasa fitur (feature engineering), model regresi, pohon keputusan (Random Forest & XGBoost), clustering, hingga deployment model melalui API FastAPI.',
-  NULL, 'data_science_python.pdf', 0, 0, 'Koleksi Sains Data', 0,
+  NULL, 'data_science_python.pdf', 0, 0, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -201,7 +201,7 @@ INSERT INTO `biblio` (
   'Seri Desain Antarmuka Produk Digital; Jilid 1',
   'EB 741.6 LES d', 'id', 'pembelian', 204, '741.6',
   'Desain antarmuka bukan sekadar mempercantik tampilan visual, melainkan menciptakan jembatan kognitif yang intuitif antara kebutuhan pengguna dan kapabilitas fungsional teknologi. Buku ini memandu desainer dan developer menciptakan pengalaman digital yang inklusif dan memikat. Menguraikan tahapan riset pengguna kualitatif dan kuantitatif, usability testing, penyusunan arsitektur informasi, prinsip Atomic Design di Figma, pembuatan tokens desain CSS lintas platform, serta pemenuhan kepatuhan aksesibilitas web internasional WCAG 2.1 Level AA.',
-  NULL, 'ui_ux_design_systems.pdf', 0, 0, 'Desain & Kreatif', 0,
+  NULL, 'ui_ux_design_systems.pdf', 0, 0, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -215,7 +215,7 @@ INSERT INTO `biblio` (
   'Seri Manajemen Eksekutif & Kewirausahaan Digital; Jilid 2',
   'EB 658.4 WIR s', 'id', 'pembelian', 203, '658.4',
   'Membangun startup teknologi bukan hanya tentang memiliki ide cemerlang, melainkan tentang eksekusi disiplin dalam memvalidasi hipotesis pasar dan membangun mesin pertumbuhan bisnis yang berkelanjutan. Buku ini mengulas strategi navigating lembah kematian (valley of death) startup. Menjabarkan metodologi Lean Startup, perhitungan unit economics presisi (Customer Acquisition Cost, Lifetime Value, Payback Period), analisis retensi berbasis kurva kohor, strategi penetapan harga B2B/B2C, serta tips negosiasi Term Sheet pada putaran pendanaan Seed hingga Seri A.',
-  NULL, 'tech_startup_scale.pdf', 0, 1, 'Bisnis & Manajemen', 0,
+  NULL, 'tech_startup_scale.pdf', 0, 1, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -229,7 +229,7 @@ INSERT INTO `biblio` (
   'Seri Pemrograman Mobile Terapan; Jilid 1',
   'EB 005.26 PRA p', 'id', 'pembelian', 204, '005.26',
   'Ekosistem Flutter telah merevolusi kecepatan pengembangan aplikasi mobile dengan menghasilkan kode terkompilasi native ke iOS dan Android dari satu basis kode Dart tunggal. Buku ini menjadi pedoman lengkap bagi pengembang yang ingin melangkah dari aplikasi sederhana ke kelas enterprise. Menitikberatkan pada pola arsitektur BLoC (Business Logic Component), manajemen state deterministik, strategi penyimpanan lokal offline-first menggunakan SQLite/Isar, sinkronisasi latar belakang dengan WorkManager, serta integrasi pustaka animasi interaktif dan CI/CD rilis otomatis ke Play Store dan App Store.',
-  NULL, 'mobile_app_flutter.pdf', 0, 0, 'Mobile Development', 0,
+  NULL, 'mobile_app_flutter.pdf', 0, 0, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -243,7 +243,7 @@ INSERT INTO `biblio` (
   'Seri Teknologi Database Skala Besar; Jilid 2',
   'EB 005.74 XU d', 'id', 'pembelian', 202, '005.74',
   'Di balik setiap aplikasi berskala masif, terdapat basis data relasional yang harus mampu melayani puluhan ribu transaksi konkuren tanpa degradasi performa atau korupsi data. Buku ini membongkar rahasia internal mesin database relasional (khususnya MySQL dan MariaDB). Menjelaskan cara kerja engine InnoDB, struktur halaman indeks B+ Tree dan Clustered Index, optimasi query lambat menggunakan EXPLAIN ANALYZE, isolasi transaksi ACID, strategi penanganan deadlock dan lock escalation, serta teknik partisi horizontal (sharding) dan replikasi data multi-region.',
-  NULL, 'database_deep_dive.pdf', 0, 0, 'Database & Backend', 0,
+  NULL, 'database_deep_dive.pdf', 0, 0, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -257,7 +257,7 @@ INSERT INTO `biblio` (
   'Seri Transformasi Manajemen Korporasi; Jilid 1',
   'EB 658.409 NAD k', 'id', 'pembelian', 206, '658.409',
   'Transformasi digital bukan tentang pembelian perangkat lunak baru atau langganan cloud termutakhir, melainkan tentang transformasi cara berpikir manusia dan keberanian kepemimpinan dalam merestrukturisasi budaya kerja organisasi agar adaptif terhadap disrupsi AI. Mengulas pengalaman kepemimpinan mentransformasikan raksasa teknologi menuju budaya Learn-it-all daripada Know-it-all, menciptakan keamanan psikologis (psychological safety) di mana kegagalan eksperimen dipelajari bukan dihukum, serta mengelola kerja kolaboratif asinkron melintasi zona waktu.',
-  NULL, 'digital_leadership.pdf', 0, 1, 'Leadership & Culture', 0,
+  NULL, 'digital_leadership.pdf', 0, 1, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -271,7 +271,7 @@ INSERT INTO `biblio` (
   'Seri Otomasi Industri & Sistem Tertanam; Jilid 1',
   'EB 004.678 PRA i', 'id', 'pembelian', 207, '004.678',
   'Revolusi Industri 4.0 bertumpu pada interkoneksi cerdas antara mesin-mesin fisik di lantai pabrik dengan platform analitik awan. Buku ini menyajikan arsitektur telemetri industri komprehensif yang dirancang untuk keandalan tinggi dan latensi rendah. Menjelaskan pemilihan mikrokontroler industri (ESP32, STM32, Raspberry Pi Compute Module), komunikasi data sensor via protokol MQTT/CoAP dengan broker Mosquitto, penyimpanan telemetri pada time-series database InfluxDB/TimescaleDB, komputasi tepi (edge computing), dan enkripsi perangkat keras TPM/Axiom.',
-  NULL, 'iot_industry_40.pdf', 0, 0, 'Hardware & IoT', 0,
+  NULL, 'iot_industry_40.pdf', 0, 0, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 ),
@@ -285,7 +285,7 @@ INSERT INTO `biblio` (
   'Seri Publikasi Ilmiah & Akademik Pascasarjana; Jilid 1',
   'EB 001.42 PRA m', 'id', 'pembelian', 203, '001.42',
   'Publikasi pada jurnal bereputasi tinggi terindeks Scopus kuartil atas (Q1/Q2) dan Web of Science menuntut metodologi riset yang ketat, orisinalitas kontribusi ilmiah yang terukur, serta penyajian naskah artikel yang memenuhi standar akademis internasional. Buku ini membimbing akademisi, peneliti, dan mahasiswa pascasarjana merumuskan kontribusi penelitian (novelty), melaksanakan Systematic Literature Review berpedoman protokol PRISMA, merancang uji coba eksperimen komparatif berbasis benchmark standar, serta menanggapi komentar reviewer secara elegan dan profesional.',
-  NULL, 'metodologi_riset_scopus.pdf', 0, 1, 'Akademik & Riset', 0,
+  NULL, 'metodologi_riset_scopus.pdf', 0, 1, NULL, 0,
   'Format: PDF Vektor Digital (Searchable Text, High-DPI Diagram) | Proteksi: Read-Only Watermarked | Resolusi: 300 DPI | Lisensi: Akses Terbuka Perpustakaan Galura',
   20, 2, 16, NOW(), NOW(), 1
 )
@@ -426,3 +426,23 @@ INSERT INTO `biblio_attachment` (`biblio_id`, `file_id`, `placement`, `access_ty
 (213, 213, 'embed', 'public', NULL),
 (214, 214, 'embed', 'public', NULL),
 (215, 215, 'embed', 'public', NULL);
+
+-- 10. Eksemplar Item Digital E-Book (item)
+DELETE FROM `item` WHERE `biblio_id` BETWEEN 201 AND 215;
+INSERT INTO `item` (`item_id`, `biblio_id`, `coll_type_id`, `item_code`, `inventory_code`, `received_date`, `supplier_id`, `order_no`, `location_id`, `item_status_id`, `site`, `source`, `price`, `price_currency`, `input_date`, `last_update`) VALUES
+(201, 201, 1, 'EB-001', 'INV/EB/2024/001', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(202, 202, 1, 'EB-002', 'INV/EB/2024/002', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(203, 203, 1, 'EB-003', 'INV/EB/2024/003', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(204, 204, 1, 'EB-004', 'INV/EB/2024/004', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(205, 205, 1, 'EB-005', 'INV/EB/2024/005', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(206, 206, 1, 'EB-006', 'INV/EB/2024/006', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(207, 207, 1, 'EB-007', 'INV/EB/2024/007', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(208, 208, 1, 'EB-008', 'INV/EB/2024/008', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(209, 209, 1, 'EB-009', 'INV/EB/2024/009', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(210, 210, 1, 'EB-010', 'INV/EB/2024/010', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(211, 211, 1, 'EB-011', 'INV/EB/2024/011', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(212, 212, 1, 'EB-012', 'INV/EB/2024/012', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(213, 213, 1, 'EB-013', 'INV/EB/2024/013', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(214, 214, 1, 'EB-014', 'INV/EB/2024/014', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW()),
+(215, 215, 1, 'EB-015', 'INV/EB/2024/015', CURDATE(), '0', 'PO-EB-2024-01', 'SL', '0', 'Server Digital Galura', 1, 0, 'Rupiah', NOW(), NOW())
+ON DUPLICATE KEY UPDATE `last_update`=NOW();
